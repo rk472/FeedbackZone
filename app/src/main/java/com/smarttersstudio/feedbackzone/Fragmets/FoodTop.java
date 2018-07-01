@@ -58,6 +58,7 @@ public class FoodTop extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
         setData(5, 100);
+        mChart.animateXY(1400, 1400);
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);

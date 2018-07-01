@@ -59,7 +59,7 @@ public class SecurityTop extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
         setData(5, 100);
-        //mChart.animateY(1400, Easing.EaseInOutQuad);
+        mChart.animateXY(1400, 1400);
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);

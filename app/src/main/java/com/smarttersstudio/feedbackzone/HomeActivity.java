@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarttersstudio.feedbackzone.Adapters.SwipeAdapter;
@@ -19,18 +20,18 @@ import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
 public class HomeActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setOffscreenPageLimit(1);
+        viewPager = findViewById(R.id.view_pager);
         SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);
         viewPager.setCurrentItem(0);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Fragment f = null;
