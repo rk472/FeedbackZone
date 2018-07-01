@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="10">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3">
@@ -27,7 +27,35 @@
                 android:id="@+id/view_pager"
                 android:layout_height="match_parent"
                 />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="#70d3d3d3"
+                android:onClick="prev">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_navigate_before_black_24dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:background="#70d3d3d3"
+                android:gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:onClick="next">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_navigate_next_black_24dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

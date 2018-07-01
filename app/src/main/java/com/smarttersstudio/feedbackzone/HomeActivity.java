@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarttersstudio.feedbackzone.Adapters.SwipeAdapter;
@@ -19,13 +20,14 @@ import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
 public class HomeActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager= findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
         SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);
@@ -80,5 +82,13 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void prev(View view) {
+        viewPager.setCurrentItem(viewPager.getCurrentItem()-1, true);
+    }
+
+    public void next(View view) {
+        viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
     }
 }
