@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -41,12 +42,10 @@ public class FoodTop extends Fragment {
 
         mChart.setUsePercentValues(true);
         mChart.getDescription().setEnabled(false);
-        //mChart.setExtraOffsets(5, 10, 5, 5);
         mChart.setDragDecelerationFrictionCoef(0.95f);
         tf = Typeface.createFromAsset(main.getAssets(), "OpenSans-Regular.ttf");
         mChart.setCenterTextTypeface(Typeface.createFromAsset(main.getAssets(), "OpenSans-Light.ttf"));
         mChart.setCenterText("Summery");
-        //mChart.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
         mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(Color.WHITE);
         mChart.setTransparentCircleColor(Color.WHITE);
@@ -64,6 +63,7 @@ public class FoodTop extends Fragment {
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
+        l.setTextSize(12f);
         l.setEnabled(true);
     }
     private void setData(int count, float range) {
@@ -111,5 +111,12 @@ public class FoodTop extends Fragment {
         // undo all highlights
         mChart.highlightValues(null);
         mChart.invalidate();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Toast.makeText(main, "Food Start", Toast.LENGTH_SHORT).show();
+        super.onResume();
+        mChart.animateXY(1400, 1400);
     }
 }

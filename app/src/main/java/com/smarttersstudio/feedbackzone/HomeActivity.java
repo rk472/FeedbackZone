@@ -8,15 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarttersstudio.feedbackzone.Adapters.SwipeAdapter;
 import com.smarttersstudio.feedbackzone.Fragmets.AdministrationBottom;
 import com.smarttersstudio.feedbackzone.Fragmets.FoodBottom;
+import com.smarttersstudio.feedbackzone.Fragmets.FoodTop;
 import com.smarttersstudio.feedbackzone.Fragmets.ManagerBottom;
 import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class HomeActivity extends AppCompatActivity {
+    private  ViewPager viewPager;
     private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
     @Override
@@ -25,15 +30,18 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
+        final SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);
+        DotsIndicator dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
+        dotsIndicator.setViewPager(viewPager);
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Fragment f = null;
+                int c = 0;
                 switch(position){
                     case 0:
                         f = new FoodBottom();
@@ -52,11 +60,9 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.main_container,f);
                 fragmentTransaction.commit();
             }
-
             @Override
             public void onPageSelected(int position) {
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
             }
@@ -80,5 +86,13 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void prev(View view) {
+        viewPager.setCurrentItem(viewPager.getCurrentItem()-1, true);
+    }
+
+    public void next(View view) {
+        viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
     }
 }

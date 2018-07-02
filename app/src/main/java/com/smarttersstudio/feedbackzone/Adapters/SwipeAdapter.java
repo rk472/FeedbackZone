@@ -14,7 +14,6 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
     public SwipeAdapter(FragmentManager fm) {
         super(fm);
     }
-
     @Override
     public Fragment getItem(int position) {
         Fragment f = null;

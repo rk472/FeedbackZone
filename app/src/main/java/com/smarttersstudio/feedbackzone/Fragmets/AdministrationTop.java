@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -58,12 +59,13 @@ public class AdministrationTop extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
         setData(5, 100);
-        mChart.animateXY(1400, 1400);
+
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
+        l.setTextSize(12f);
         l.setEnabled(true);
     }
     private void setData(int count, float range) {
@@ -112,4 +114,13 @@ public class AdministrationTop extends Fragment {
         mChart.highlightValues(null);
         mChart.invalidate();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Toast.makeText(main, "Admin Start", Toast.LENGTH_SHORT).show();
+        super.onResume();
+        mChart.animateXY(1400, 1400);
+    }
+
 }
