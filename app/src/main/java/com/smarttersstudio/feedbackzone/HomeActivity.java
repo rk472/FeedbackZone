@@ -1,6 +1,7 @@
 package com.smarttersstudio.feedbackzone;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -29,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
+
         viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
         final SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
@@ -94,8 +96,22 @@ public class HomeActivity extends AppCompatActivity {
     public void next(View view) {
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
     }
-
-    public void openProfile(View view) {
-
+    public void openProfile(View v){
+        startActivity(new Intent(this,ProfileActivity.class));
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(mAuth.getCurrentUser()==null){
+                    startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+                    finish();
+                }
+            }
+        });
+    }
+
 }

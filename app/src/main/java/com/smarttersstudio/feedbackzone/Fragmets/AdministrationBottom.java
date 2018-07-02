@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 import com.smarttersstudio.feedbackzone.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AdministrationBottom extends Fragment {
 
 

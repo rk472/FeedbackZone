@@ -4,12 +4,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragmets.FoodBottom">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20dp"
-        android:text="food Bottom" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOOD DEPARTMENT"
+                android:textSize="25sp"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What dis you like most about our food and services?"/>
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/foos_ans1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What dis you not like about our food and services?"
+                />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/foos_ans2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How Quick and adequate was the speed of the service?"
+                />
+            <SeekBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_ans3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Was the selection of beverage sufficient?"
+                />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/food_radio">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/food_yes"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="no"
+                    android:id="@+id/food_no"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How much you think our place is in cleanliness?"
+                />
+            <SeekBar
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_ans4"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How much you will rate the overall department?"
+                />
+            <android.support.v7.widget.AppCompatRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/food_rate"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Any suggestions you want to give to make our department even better ?"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="You are free to give any suggessions"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="want to give feedback anonymously"
+                android:id="@+id/food_anonymous"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="submit"
+                android:id="@+id/food_submit"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>

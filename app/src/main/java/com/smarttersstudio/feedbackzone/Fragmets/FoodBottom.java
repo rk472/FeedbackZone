@@ -6,25 +6,29 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import com.smarttersstudio.feedbackzone.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FoodBottom extends Fragment {
 
 
-    public FoodBottom() {
-        // Required empty public constructor
-    }
-
+    private View root;
+    private Button submitButton;
+    private CheckBox anonymous;
+    private EditText feedBackText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_bottom, container, false);
+
+        root=inflater.inflate(R.layout.fragment_food_bottom, container, false);
+
+
+        return root;
     }
 
 }
