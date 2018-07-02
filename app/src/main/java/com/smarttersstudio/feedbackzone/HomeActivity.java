@@ -29,7 +29,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mAuth = FirebaseAuth.getInstance();
-
         viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(1);
         final SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
@@ -94,5 +93,9 @@ public class HomeActivity extends AppCompatActivity {
 
     public void next(View view) {
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
+    }
+
+    public void openProfile(View view) {
+
     }
 }

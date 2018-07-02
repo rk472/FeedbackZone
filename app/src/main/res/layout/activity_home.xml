@@ -7,77 +7,81 @@
     android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/chart1"
-        android:visibility="gone"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/chart1" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.v4.view.ViewPager
+                android:layout_height="0dp"
+                android:layout_weight="3">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/view_pager"
                     android:layout_height="match_parent">
-                </android.support.v4.view.ViewPager>
-                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-                    android:id="@+id/dots_indicator"
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:id="@+id/view_pager"
+                        android:layout_height="match_parent">
+                    </android.support.v4.view.ViewPager>
+                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                        android:id="@+id/dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        app:dotsColor="@color/colorPrimary"
+                        app:dotsSize="10dp"
+                        app:dotsSpacing="2dp"
+                        android:layout_margin="5dp"
+                        app:dotsWidthFactor="2"
+                        />
+                </RelativeLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    app:dotsColor="@color/colorPrimary"
-                    app:dotsSize="10dp"
-                    app:dotsSpacing="2dp"
-                    android:layout_margin="5dp"
-                    app:dotsWidthFactor="2"
-                    />
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:background="#70d3d3d3"
+                    android:onClick="prev">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_navigate_before_black_24dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:background="#70d3d3d3"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:onClick="next">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_navigate_next_black_24dp" />
+                </LinearLayout>
             </RelativeLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:background="#70d3d3d3"
-                android:onClick="prev">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_navigate_before_black_24dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:background="#70d3d3d3"
-                android:gravity="center_vertical"
-                android:layout_alignParentRight="true"
-                android:onClick="next">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_navigate_next_black_24dp" />
-            </LinearLayout>
-
-        </RelativeLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:id="@+id/main_container"
-            android:layout_weight="7">
-
-        </FrameLayout>
-    </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/main_container"
+                android:layout_weight="7">
+            </FrameLayout>
+        </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fab_profile"
+            android:layout_gravity="bottom|right"
+            android:onClick="openProfile"
+            android:elevation="4dp"
+            android:layout_margin="15sp"
+            android:src="@drawable/vect_profile"
+            />
+    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
