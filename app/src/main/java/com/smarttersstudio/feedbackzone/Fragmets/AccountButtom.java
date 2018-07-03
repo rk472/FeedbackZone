@@ -1,8 +1,9 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
-
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -27,10 +28,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class SecurityBottom extends Fragment {
+
+public class AccountButtom extends Fragment {
+
     private View root;
     private Button submitButton;
     private EditText feedBackText;
@@ -41,11 +41,11 @@ public class SecurityBottom extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root= inflater.inflate(R.layout.fragment_security_bottom, container, false);
-        submitButton=root.findViewById(R.id.security_submit);
-        feedBackText=root.findViewById(R.id.security_feedback);
-        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("security");
-        mAuth= FirebaseAuth.getInstance();
+        root=inflater.inflate(R.layout.fragment_account_buttom, container, false);
+        submitButton=root.findViewById(R.id.account_submit);
+        feedBackText=root.findViewById(R.id.account_feedback);
+        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("accounts");
+        mAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait while we are logging you in..");
         progressDialog.setTitle("Please Wait");

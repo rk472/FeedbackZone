@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragmets.SecurityBottom">
+    tools:context=".Fragmets.OtherButtom">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,29 +15,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SECURITY DEPARTMENT"
+                android:text="OTHERS"
                 android:textSize="25sp"
                 android:layout_margin="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Any suggestions you want to give to make our department even better ?"
+                android:text="Any suggestions you want to give to make our company even better ?"
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:id="@+id/security_feedback"
+                android:id="@+id/other_feedback"
                 android:hint="You are free to give any suggessions"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="submit"
-                android:id="@+id/security_submit"
+                android:id="@+id/other_submit"
                 />
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </FrameLayout>

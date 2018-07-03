@@ -66,6 +66,12 @@
                         android:src="@drawable/ic_navigate_next_black_24dp" />
                 </LinearLayout>
             </RelativeLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="show all reviews"
+                android:id="@+id/show_review_button"
+                android:onClick="showAllReview"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

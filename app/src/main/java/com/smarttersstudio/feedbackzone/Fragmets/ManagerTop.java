@@ -18,6 +18,11 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.smarttersstudio.feedbackzone.R;
 
 import java.util.ArrayList;
@@ -27,15 +32,32 @@ public class ManagerTop extends Fragment {
     private AppCompatActivity main;
     private PieChart mChart;
     private Typeface tf;
-    public ManagerTop() {
-    }
+    private DatabaseReference totalRef;
+    private float one,two,three,four,five,total;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_manager_top, container, false);
         main=(AppCompatActivity)getActivity();
         mChart = (PieChart)root.findViewById(R.id.chartManager);
-        initializeChart();
+        totalRef= FirebaseDatabase.getInstance().getReference().child("total").child("manager");
+        totalRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                one=Float.parseFloat(dataSnapshot.child("one").getValue().toString());
+                two=Float.parseFloat(dataSnapshot.child("two").getValue().toString());
+                three=Float.parseFloat(dataSnapshot.child("three").getValue().toString());
+                four=Float.parseFloat(dataSnapshot.child("four").getValue().toString());
+                five=Float.parseFloat(dataSnapshot.child("five").getValue().toString());
+                total=one+two+three+four+five;
+                initializeChart();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return root;
     }
     private void initializeChart(){
@@ -73,11 +95,11 @@ public class ManagerTop extends Fragment {
         float mult = range;
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
-
-        for (int i = 0; i < count; i++) {
-            String mParties = null;
-            entries.add(new PieEntry((float) (Math.random() * mult) + mult / 5, (i+1)+"*"));
-        }
+        entries.add(new PieEntry(one/total, ""+1+"*"));
+        entries.add(new PieEntry(two/total, ""+2+"*"));
+        entries.add(new PieEntry(three/total, ""+3+"*"));
+        entries.add(new PieEntry(four/total, ""+4+"*"));
+        entries.add(new PieEntry(five/total, ""+5+"*"));
 
         PieDataSet dataSet = new PieDataSet(entries, "Manager");
         dataSet.setSliceSpace(3f);
@@ -117,8 +139,6 @@ public class ManagerTop extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Toast.makeText(main, "Manager Start", Toast.LENGTH_SHORT).show();
-        super.onResume();
         mChart.animateXY(1400, 1400);
     }
 }

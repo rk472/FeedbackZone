@@ -1,8 +1,9 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
-
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -27,10 +28,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class SecurityBottom extends Fragment {
+
+public class OtherButtom extends Fragment {
     private View root;
     private Button submitButton;
     private EditText feedBackText;
@@ -41,10 +40,10 @@ public class SecurityBottom extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root= inflater.inflate(R.layout.fragment_security_bottom, container, false);
-        submitButton=root.findViewById(R.id.security_submit);
-        feedBackText=root.findViewById(R.id.security_feedback);
-        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("security");
+        root=inflater.inflate(R.layout.fragment_other_buttom, container, false);
+        submitButton=root.findViewById(R.id.other_submit);
+        feedBackText=root.findViewById(R.id.other_feedback);
+        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("other");
         mAuth= FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait while we are logging you in..");
@@ -105,5 +104,6 @@ public class SecurityBottom extends Fragment {
         });
 
     }
+
 
 }

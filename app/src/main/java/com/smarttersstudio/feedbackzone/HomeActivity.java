@@ -13,13 +13,14 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarttersstudio.feedbackzone.Adapters.SwipeAdapter;
+import com.smarttersstudio.feedbackzone.Fragmets.AccountButtom;
 import com.smarttersstudio.feedbackzone.Fragmets.AdministrationBottom;
 import com.smarttersstudio.feedbackzone.Fragmets.FoodBottom;
-import com.smarttersstudio.feedbackzone.Fragmets.FoodTop;
+import com.smarttersstudio.feedbackzone.Fragmets.HRBUttom;
 import com.smarttersstudio.feedbackzone.Fragmets.ManagerBottom;
+import com.smarttersstudio.feedbackzone.Fragmets.OtherButtom;
 import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class HomeActivity extends AppCompatActivity {
     private  ViewPager viewPager;
@@ -42,23 +43,39 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Fragment f = null;
-                int c = 0;
+                String tag = null;
                 switch(position){
                     case 0:
                         f = new FoodBottom();
+                        tag="food";
                         break;
                     case 1:
                         f = new AdministrationBottom();
+                        tag="admin";
                         break;
                     case 2:
                         f = new ManagerBottom();
+                        tag="manager";
                         break;
                     case 3:
                         f = new SecurityBottom();
+                        tag="security";
+                        break;
+                    case 4:
+                        f=new OtherButtom();
+                        tag="other";
+                        break;
+                    case 5:
+                        f=new AccountButtom();
+                        tag="accounts";
+                        break;
+                    case 6:
+                        f=new HRBUttom();
+                        tag="HR";
                         break;
                 }
                 fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.main_container,f);
+                fragmentTransaction.replace(R.id.main_container,f,tag);
                 fragmentTransaction.commit();
             }
             @Override
@@ -114,4 +131,10 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    public void showAllReview(View view) {
+        String tag=getSupportFragmentManager().findFragmentById(R.id.main_container).getTag();
+        Intent i=new Intent(HomeActivity.this,FeedbackListActivity.class);
+        i.putExtra("dept",tag);
+        startActivity(i);
+    }
 }

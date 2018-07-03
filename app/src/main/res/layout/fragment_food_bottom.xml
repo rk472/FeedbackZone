@@ -12,6 +12,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
             <EditText
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/foos_ans1"/>
+                android:id="@+id/food_ans1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,6 +85,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/food_rate"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update rating"
+                android:id="@+id/update_food"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,11 +100,6 @@
                 android:layout_height="100dp"
                 android:id="@+id/food_feedback"
                 android:hint="You are free to give any suggessions"/>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="want to give feedback anonymously"
-                android:id="@+id/food_anonymous"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

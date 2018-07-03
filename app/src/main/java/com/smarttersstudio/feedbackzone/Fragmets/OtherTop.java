@@ -1,8 +1,9 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
-
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -27,22 +28,22 @@ import com.smarttersstudio.feedbackzone.R;
 
 import java.util.ArrayList;
 
-public class AdministrationTop extends Fragment {
+
+public class OtherTop extends Fragment {
     private View root;
     private AppCompatActivity main;
     private PieChart mChart;
     private Typeface tf;
     private DatabaseReference totalRef;
     private float one,two,three,four,five,total;
-    public AdministrationTop() {
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_administration_top, container, false);
+        // Inflate the layout for this fragment
+        root=inflater.inflate(R.layout.fragment_other_top, container, false);
         main=(AppCompatActivity)getActivity();
-        mChart = (PieChart)root.findViewById(R.id.chartAdministration);
-        totalRef= FirebaseDatabase.getInstance().getReference().child("total").child("admin");
+        mChart = (PieChart)root.findViewById(R.id.chartOther);
+        totalRef= FirebaseDatabase.getInstance().getReference().child("total").child("others");
         totalRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,7 +84,7 @@ public class AdministrationTop extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
         setData(5, 100);
-
+        mChart.animateXY(1400, 1400);
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
@@ -103,8 +104,7 @@ public class AdministrationTop extends Fragment {
         entries.add(new PieEntry(three/total, ""+3+"*"));
         entries.add(new PieEntry(four/total, ""+4+"*"));
         entries.add(new PieEntry(five/total, ""+5+"*"));
-
-        PieDataSet dataSet = new PieDataSet(entries, "Administration");
+        PieDataSet dataSet = new PieDataSet(entries, "Others");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
         // add a lot of colors
@@ -139,11 +139,11 @@ public class AdministrationTop extends Fragment {
         mChart.highlightValues(null);
         mChart.invalidate();
     }
-
     @Override
     public void onStart() {
         super.onStart();
         mChart.animateXY(1400, 1400);
     }
+
 
 }

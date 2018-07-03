@@ -18,21 +18,17 @@
         </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".HomeActivity"
             android:theme="@style/NoBar" />
-        <activity
-            android:name=".SignupActivity"
-            android:label="Register Now"
-            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".ForgotActivity"
             android:label="Reset Password"
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".FeedbackListActivity"></activity>
     </application>
 
 </manifest>
