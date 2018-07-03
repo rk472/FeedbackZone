@@ -25,9 +25,11 @@
             android:theme="@style/NoBar" />
         <activity
             android:name=".SignupActivity"
+            android:label="Register Now"
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".ForgotActivity"
+            android:label="Reset Password"
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".EditProfileActivity"></activity>
