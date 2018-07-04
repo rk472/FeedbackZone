@@ -82,7 +82,6 @@ public class ManagerBottom extends Fragment {
             public void onClick(View v) {
                 if(level>2){
                     Intent i=new Intent(getActivity(), JuniorListActivity.class);
-                    i.putExtra("uid",managerUid);
                     startActivity(i);
                 }else{
                     Toast.makeText(getActivity(), "Your juniors don't have anyone to get feedback's like you", Toast.LENGTH_SHORT).show();
