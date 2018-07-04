@@ -1,7 +1,8 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
 
-import android.app.ProgressDialog;
+
+
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,7 +49,6 @@ public class FoodBottom extends Fragment {
     private EditText feedBackText;
     private FirebaseAuth mAuth;
     private DatabaseReference feedbackRef,ratingRef,totalRef,rateRef;
-    private ProgressDialog progressDialog;
     private EditText ans1,ans2;
     private SeekBar s1,s2;
     private RadioGroup rg1;
@@ -98,14 +98,14 @@ public class FoodBottom extends Fragment {
                 String like=ans1.getText().toString();
                 String dislike=ans2.getText().toString();
                 String speed=Integer.toString(s1.getProgress());
-                RadioButton r=(RadioButton)root.findViewById(rg1.getCheckedRadioButtonId());
+                RadioButton r=root.findViewById(rg1.getCheckedRadioButtonId());
                 String sufficient=r.getText().toString();
                 String clean=Integer.toString(s2.getProgress());
                 String rate1=Integer.toString((int)rb.getRating());
                 if(TextUtils.isEmpty(like) ||TextUtils.isEmpty(dislike) || TextUtils.isEmpty(speed)||TextUtils.isEmpty(clean)||TextUtils.isEmpty(sufficient)||TextUtils.isEmpty(rate1) ){
                     Toast.makeText(getActivity(), "Can't rate with empty fields", Toast.LENGTH_SHORT).show();
                 }else{
-                    Map m=new HashMap<>();
+                    Map<String, Object> m=new HashMap<String, Object>();
                     m.put("like",like);
                     m.put("dislike",dislike);
                     m.put("speed",speed);
@@ -206,11 +206,7 @@ public class FoodBottom extends Fragment {
 
             }
         });
-        progressDialog=new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait while we are logging you in..");
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,24 +214,26 @@ public class FoodBottom extends Fragment {
                 if(TextUtils.isEmpty(feedback)){
                     Toast.makeText(getActivity(), "can't give empty feedback..", Toast.LENGTH_SHORT).show();
                 }else {
-                    progressDialog.show();
-                    new AlertDialog.Builder(getActivity())
-                            .setTitle("Give Feedback")
-                            .setMessage("Do You want to show your name ?")
-                            .setPositiveButton("Yes",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            String uid=mAuth.getCurrentUser().getUid();
-                                            giveFeedBack(feedback,uid);
-                                        }
-                                    }).setNegativeButton("No",
+
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Give Feedback");
+                    builder.setMessage("Do You want to show your name ?");
+                    builder.setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String uid = mAuth.getCurrentUser().getUid();
+                                    giveFeedBack(feedback, uid);
+                                }
+                            });
+                    builder.setNegativeButton("No",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    giveFeedBack(feedback,"1");
+                                    giveFeedBack(feedback, "1");
                                 }
-                            }).show();
+                            });
+                    AlertDialog a = builder.show();
                 }
             }
         });
@@ -255,16 +253,17 @@ public class FoodBottom extends Fragment {
             public void onSuccess(Object o) {
                 Toast.makeText(getActivity(), "FeedBack successfully posted...", Toast.LENGTH_SHORT).show();
                 feedBackText.setText("");
-                progressDialog.hide();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.hide();
+
             }
         });
 
     }
+
 
 }

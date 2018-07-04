@@ -142,4 +142,5 @@ public class FoodTop extends Fragment {
         super.onStart();
         mChart.animateXY(1400, 1400);
     }
+
 }

@@ -104,6 +104,14 @@ public class OtherButtom extends Fragment {
         });
 
     }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+    }
 
 
 }

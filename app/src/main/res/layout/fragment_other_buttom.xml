@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Any suggestions you want to give to make our company even better ?"
+                android:text="Any suggestions regarding any topic which are not listed in our app you want to give to make our company even better ?"
                 />
             <EditText
                 android:layout_width="match_parent"

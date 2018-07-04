@@ -1,7 +1,6 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,7 +44,6 @@ public class AdministrationBottom extends Fragment {
     private EditText feedBackText;
     private FirebaseAuth mAuth;
     private DatabaseReference feedbackRef,totalRef,ratingRef;
-    private ProgressDialog progressDialog;
     private RadioGroup r1,r2,r3;
     private EditText ans;
     private FloatingActionButton fab;
@@ -156,11 +154,6 @@ public class AdministrationBottom extends Fragment {
                 }
             }
         });
-        progressDialog=new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait while we are logging you in..");
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
         totalRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -207,7 +200,6 @@ public class AdministrationBottom extends Fragment {
                 if(TextUtils.isEmpty(feedback)){
                     Toast.makeText(getActivity(), "can't give empty feedback..", Toast.LENGTH_SHORT).show();
                 }else {
-                    progressDialog.show();
                     new AlertDialog.Builder(getActivity())
                             .setTitle("Give Feedback")
                             .setMessage("Do You want to show your name ?")
@@ -243,17 +235,14 @@ public class AdministrationBottom extends Fragment {
             public void onSuccess(Object o) {
                 Toast.makeText(getActivity(), "FeedBack successfully posted...", Toast.LENGTH_SHORT).show();
                 feedBackText.setText("");
-                progressDialog.hide();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.hide();
             }
         });
 
     }
-
 
 }

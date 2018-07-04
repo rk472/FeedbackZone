@@ -144,4 +144,5 @@ public class AccountTop extends Fragment {
         mChart.animateXY(1400, 1400);
     }
 
+
 }

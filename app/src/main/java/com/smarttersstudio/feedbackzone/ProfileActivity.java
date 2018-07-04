@@ -87,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.vect_profile).into(dp);
                             }
                         });
-                progressDialog.hide();
+                progressDialog.dismiss();
             }
 
             @Override
@@ -159,6 +159,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Exception error = result.getError();
                 Toast.makeText(ProfileActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
         }
     }
 }

@@ -8,10 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,32 +21,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.smarttersstudio.feedbackzone.POJO.FeedBack;
 
-public class FeedbackListActivity extends AppCompatActivity {
+public class ManagerActivity extends AppCompatActivity {
     private RecyclerView list;
+    private LinearLayout lin;
+    private FirebaseAuth mAuth;
     private DatabaseReference feedbackRef;
-    FirebaseRecyclerAdapter<FeedBack,FeedBackViewHoldewr> f;
+    private FirebaseRecyclerAdapter<FeedBack,FeedBackViewHoldewr> f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback_list);
-        list=findViewById(R.id.feedback_list);
-        String dept=getIntent().getExtras().getString("dept");
-        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child(dept);
+        setContentView(R.layout.activity_manager);
+        list=findViewById(R.id.manager_list);
+        lin=findViewById(R.id.manager_list_error);
+        mAuth=FirebaseAuth.getInstance();
+        String uid=mAuth.getCurrentUser().getUid();
+        feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("manager").child(uid);
         FirebaseRecyclerOptions<FeedBack> options=new FirebaseRecyclerOptions.Builder<FeedBack>().setQuery(feedbackRef,FeedBack.class).build();
-        f=new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {
+        f= new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final FeedBackViewHoldewr holder, int position, @NonNull final FeedBack model) {
-                DatabaseReference d=FirebaseDatabase.getInstance().getReference().child("users").child(model.getUid());
-                d.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String name=dataSnapshot.child("name").getValue().toString();
-                        holder.setAll(name,model.getDate(),model.getFeedback());
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+            protected void onBindViewHolder(@NonNull FeedBackViewHoldewr holder, int position, @NonNull FeedBack model) {
+                lin.setVisibility(View.GONE);
+                holder.setAll("",model.getDate(),model.getFeedback());
+                holder.nameText.setVisibility(View.GONE);
             }
             @NonNull
             @Override
@@ -56,6 +54,7 @@ public class FeedbackListActivity extends AppCompatActivity {
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         list.setAdapter(f);
+
     }
     public static class FeedBackViewHoldewr extends RecyclerView.ViewHolder{
         View v;
@@ -79,6 +78,5 @@ public class FeedbackListActivity extends AppCompatActivity {
         super.onStart();
         f.startListening();
     }
-
 
 }

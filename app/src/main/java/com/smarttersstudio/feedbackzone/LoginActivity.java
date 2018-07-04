@@ -70,6 +70,14 @@ public class LoginActivity extends AppCompatActivity {
     public void goToForgot(View view) {
         startActivity(new Intent(LoginActivity.this,ForgotActivity.class));
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+    }
 
 
 }

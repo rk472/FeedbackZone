@@ -96,7 +96,8 @@ public class HRBUttom extends Fragment {
                 RadioButton rr3=root.findViewById(r3.getCheckedRadioButtonId());
                 RadioButton rr4=root.findViewById(r4.getCheckedRadioButtonId());
                 RadioButton rr5=root.findViewById(r5.getCheckedRadioButtonId());
-                if(rr1==null ||rr2==null ||rr3==null ||rr4==null ||rr5==null ){
+                String rate1=Integer.toString((int)rb.getRating());
+                if(rr1==null ||rr2==null ||rr3==null ||rr4==null ||rr5==null ||rate1.equals("0")){
                     Toast.makeText(getActivity(), "All questions must be answered", Toast.LENGTH_SHORT).show();
                 }else{
                     String polite=rr1.getText().toString();
@@ -104,7 +105,6 @@ public class HRBUttom extends Fragment {
                     String competent=rr3.getText().toString();
                     String pragmatic=rr4.getText().toString();
                     String notify=rr5.getText().toString();
-                    String rate1=Integer.toString((int)rb.getRating());
                     Map m=new HashMap();
                     m.put("polite",polite);
                     m.put("bias",bias);
@@ -259,6 +259,14 @@ public class HRBUttom extends Fragment {
             }
         });
 
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
 

@@ -54,4 +54,12 @@ public class ForgotActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+    }
 }

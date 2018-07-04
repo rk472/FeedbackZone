@@ -21,6 +21,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text=""/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Any suggestions you want to give to make our department even better ?"
                 />
             <EditText
@@ -32,8 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="submit"
-                android:id="@+id/security_submit"
-                />
+                android:id="@+id/security_submit" />
 
         </LinearLayout>
     </ScrollView>

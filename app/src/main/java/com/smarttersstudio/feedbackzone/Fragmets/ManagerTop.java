@@ -1,56 +1,81 @@
 package com.smarttersstudio.feedbackzone.Fragmets;
 
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.smarttersstudio.feedbackzone.HomeActivity;
+import com.smarttersstudio.feedbackzone.ProfileActivity;
 import com.smarttersstudio.feedbackzone.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ManagerTop extends Fragment {
     private View root;
     private AppCompatActivity main;
-    private PieChart mChart;
-    private Typeface tf;
-    private DatabaseReference totalRef;
-    private float one,two,three,four,five,total;
+    private LinearLayout err;
+    private CircleImageView dp;
+    private TextView nameText;
+    private DatabaseReference managerRef,userRef;
+    private FirebaseAuth mAuth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_manager_top, container, false);
         main=(AppCompatActivity)getActivity();
-        mChart = (PieChart)root.findViewById(R.id.chartManager);
-        totalRef= FirebaseDatabase.getInstance().getReference().child("total").child("manager");
-        totalRef.addValueEventListener(new ValueEventListener() {
+        mAuth=FirebaseAuth.getInstance();
+        nameText=root.findViewById(R.id.manager_name);
+        dp=root.findViewById(R.id.manager_dp);
+        err=root.findViewById(R.id.manager_error);
+        String uid=mAuth.getCurrentUser().getUid();
+        userRef= FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+        userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                one=Float.parseFloat(dataSnapshot.child("one").getValue().toString());
-                two=Float.parseFloat(dataSnapshot.child("two").getValue().toString());
-                three=Float.parseFloat(dataSnapshot.child("three").getValue().toString());
-                four=Float.parseFloat(dataSnapshot.child("four").getValue().toString());
-                five=Float.parseFloat(dataSnapshot.child("five").getValue().toString());
-                total=one+two+three+four+five;
-                initializeChart();
+               String m=dataSnapshot.child("manager").getValue().toString();
+               if(!m.equals("no")){
+                   err.setVisibility(View.GONE);
+                   managerRef=FirebaseDatabase.getInstance().getReference().child("users").child(m);
+                   managerRef.addValueEventListener(new ValueEventListener() {
+                       @Override
+                       public void onDataChange(DataSnapshot dataSnapshot) {
+                          String name=dataSnapshot.child("name").getValue().toString();
+                          final String url=dataSnapshot.child("image").getValue().toString();
+                          nameText.setText(name);
+                           Picasso.with(getActivity()).load(url).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.vect_profile)
+                                   .into(dp, new Callback() {
+                                       @Override
+                                       public void onSuccess() {
+                                       }
+
+                                       @Override
+                                       public void onError() {
+                                           Picasso.with(getActivity()).load(url).placeholder(R.drawable.vect_profile).into(dp);
+                                       }
+                                   });
+                       }
+
+                       @Override
+                       public void onCancelled(DatabaseError databaseError) {
+
+                       }
+                   });
+               }
             }
 
             @Override
@@ -58,87 +83,9 @@ public class ManagerTop extends Fragment {
 
             }
         });
+
         return root;
     }
-    private void initializeChart(){
-        //Chart Initialization
-        mChart.setUsePercentValues(true);
-        mChart.getDescription().setEnabled(false);
-        //mChart.setExtraOffsets(5, 10, 5, 5);
-        mChart.setDragDecelerationFrictionCoef(0.95f);
-        tf = Typeface.createFromAsset(main.getAssets(), "OpenSans-Regular.ttf");
-        mChart.setCenterTextTypeface(Typeface.createFromAsset(main.getAssets(), "OpenSans-Light.ttf"));
-        mChart.setCenterText("Summery");
-       // mChart.setExtraOffsets(20.f, 0.f, 20.f, 0.f);
-        mChart.setDrawHoleEnabled(true);
-        mChart.setHoleColor(Color.WHITE);
-        mChart.setTransparentCircleColor(Color.WHITE);
-        mChart.setTransparentCircleAlpha(110);
-        mChart.setHoleRadius(45f);
-        mChart.setTransparentCircleRadius(49f);
-        mChart.setDrawCenterText(true);
-        mChart.setRotationAngle(0);
-        mChart.setRotationEnabled(true);
-        mChart.setHighlightPerTapEnabled(true);
-        setData(5, 100);
-        mChart.animateXY(1400, 1400);
-        Legend l = mChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-        l.setTextSize(12f);
-        l.setEnabled(true);
-    }
-    private void setData(int count, float range) {
 
-        float mult = range;
 
-        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
-        entries.add(new PieEntry(one/total, ""+1+"*"));
-        entries.add(new PieEntry(two/total, ""+2+"*"));
-        entries.add(new PieEntry(three/total, ""+3+"*"));
-        entries.add(new PieEntry(four/total, ""+4+"*"));
-        entries.add(new PieEntry(five/total, ""+5+"*"));
-
-        PieDataSet dataSet = new PieDataSet(entries, "Manager");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-        // add a lot of colors
-        ArrayList<Integer> colors = new ArrayList<Integer>();
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
-        colors.add(ColorTemplate.getHoloBlue());
-        dataSet.setColors(colors);
-        dataSet.setValueLinePart1OffsetPercentage(80.f);
-        dataSet.setValueLinePart1Length(0.2f);
-        dataSet.setValueLinePart2Length(0.4f);
-        //dataSet.setUsingSliceColorAsValueLineColor(true);
-
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-
-        PieData data = new PieData(dataSet);
-        data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
-        data.setValueTextColor(Color.BLACK);
-        data.setValueTypeface(tf);
-        mChart.setData(data);
-        // undo all highlights
-        mChart.highlightValues(null);
-        mChart.invalidate();
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        mChart.animateXY(1400, 1400);
-    }
 }
