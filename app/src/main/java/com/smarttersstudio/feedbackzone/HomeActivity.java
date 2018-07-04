@@ -2,6 +2,7 @@ package com.smarttersstudio.feedbackzone;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ScrollView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarttersstudio.feedbackzone.Adapters.SwipeAdapter;
@@ -23,7 +25,7 @@ import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 public class HomeActivity extends AppCompatActivity {
-    private  ViewPager viewPager;
+    private ViewPager viewPager;
     private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
     @Override

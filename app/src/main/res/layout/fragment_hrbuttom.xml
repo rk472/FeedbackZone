@@ -6,6 +6,7 @@
     tools:context=".Fragmets.HRBUttom">
     <ScrollView
         android:layout_width="match_parent"
+        android:id="@+id/hr_scroll"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"

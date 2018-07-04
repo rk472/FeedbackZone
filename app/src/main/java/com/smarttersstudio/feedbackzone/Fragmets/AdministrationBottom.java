@@ -3,8 +3,10 @@ package com.smarttersstudio.feedbackzone.Fragmets;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,6 +48,8 @@ public class AdministrationBottom extends Fragment {
     private ProgressDialog progressDialog;
     private RadioGroup r1,r2,r3;
     private EditText ans;
+    private FloatingActionButton fab;
+    private ScrollView sv;
     private RatingBar rb;
     private String rate="0";
     private Float one,two,three,four,five;
@@ -65,6 +70,22 @@ public class AdministrationBottom extends Fragment {
         r3=root.findViewById(R.id.admin_radio_3);
         ans=root.findViewById(R.id.admin_ans);
         rb=root.findViewById(R.id.admin_rate);
+        //Fab Hide Test
+        fab=getActivity().findViewById(R.id.fab_profile);
+        sv=root.findViewById(R.id.admin_scroll);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            sv.setOnScrollChangeListener(new ScrollView.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if (scrollY > oldScrollY) {
+                        fab.hide();
+                    } else {
+                        fab.show();
+                    }
+                }
+            });
+        }
+        //Fab end
         updateButton=root.findViewById(R.id.admin_update_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
