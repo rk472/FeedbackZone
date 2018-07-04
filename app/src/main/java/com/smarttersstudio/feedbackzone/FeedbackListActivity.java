@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,16 +40,12 @@ public class FeedbackListActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String name=dataSnapshot.child("name").getValue().toString();
                         holder.setAll(name,model.getDate(),model.getFeedback());
-
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
             }
-
             @NonNull
             @Override
             public FeedBackViewHoldewr onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
