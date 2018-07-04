@@ -1,111 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragmets.FoodBottom">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/food_scroll"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FOOD DEPARTMENT"
-                android:textSize="25sp"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="What dish you like most about our food and services?"/>
-            <EditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/food_ans1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="What dis you not like about our food and services?"
-                />
-            <EditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/foos_ans2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="How Quick and adequate was the speed of the service?"
-                />
-            <SeekBar
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/food_ans3"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Was the selection of beverage sufficient?"
-                />
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/food_radio">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes"
-                    android:id="@+id/food_yes"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="no"
-                    android:id="@+id/food_no"/>
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="How much you think our place is in cleanliness?"
-                />
-            <SeekBar
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/food_ans4"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="How much you will rate the overall department?"
-                />
-            <android.support.v7.widget.AppCompatRatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/food_rate"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update rating"
-                android:id="@+id/update_food"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Any suggestions you want to give to make our department even better ?"
-                />
-            <EditText
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:gravity="center"
+            android:fontFamily="@font/alike_angular"
+            android:text="FOOD DEPARTMENT"
+            android:textSize="25sp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/food_scroll"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/food_feedback"
-                android:hint="You are free to give any suggessions"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="submit"
-                android:id="@+id/food_submit"
-                />
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/alike_angular"
+                            android:text="What dish you like most about our food and services?" />
+
+                        <EditText
+                            android:id="@+id/food_ans1"
+                            android:layout_width="300sp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:text="What dis you not like about our food and services?"
+                        />
+                    <EditText
+                        android:layout_width="300sp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/foos_ans2"/>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:layout_height="wrap_content"
+                        android:text="How Quick and adequate was the speed of the service?"
+                        />
+                    <SeekBar
+                        android:layout_width="300sp"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/food_ans3"/>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:layout_height="wrap_content"
+                        android:text="Was the selection of beverage sufficient?"
+                        />
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/food_radio">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:id="@+id/food_yes"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50sp"
+                            android:text="No"
+                            android:id="@+id/food_no"/>
+                    </RadioGroup>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:layout_height="wrap_content"
+                        android:text="How much you think our place is in cleanliness?"
+                        />
+                    <SeekBar
+                        android:layout_width="300dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/food_ans4"/>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:layout_height="wrap_content"
+                        android:text="How much you will rate the overall department?"
+                        />
+
+                    <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/food_rate"
+                        android:layout_margin="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Update Ratings"
+                        android:fontFamily="@font/alike_angular"
+                        android:textAllCaps="false"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorGreen"
+                        android:background="#00ffffff"
+                        android:id="@+id/update_food"/>
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alike_angular"
+                        android:text="Give Feedback"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="17dp"
+                        android:fontFamily="@font/alike_angular"
+                        android:text="Any suggestions you want to give to make our department even better ?"
+                        />
+                    <EditText
+                        android:layout_width="300sp"
+                        android:layout_height="50dp"
+                        android:id="@+id/food_feedback"
+                        android:hint="You are free to give any suggessions"/>
+                    <Button
+                        android:layout_width="180sp"
+                        android:layout_height="wrap_content"
+                        android:text="Submit Feedback"
+                        android:textColor="#ffffff"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorAccent"
+                        android:id="@+id/food_submit"
+                        />
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </FrameLayout>
