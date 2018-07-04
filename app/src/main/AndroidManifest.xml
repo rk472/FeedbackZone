@@ -30,6 +30,7 @@
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FeedbackListActivity"></activity>
+        <activity android:name=".JuniorListActivity"></activity>
     </application>
 
 </manifest>
