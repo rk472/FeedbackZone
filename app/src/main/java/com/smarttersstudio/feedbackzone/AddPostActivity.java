@@ -77,7 +77,7 @@ public class AddPostActivity extends AppCompatActivity {
         });
     }
 
-    public void post(View view) {
+    public void post(final View view) {
         view.setEnabled(false);
         String post=postText.getText().toString();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -99,6 +99,7 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(AddPostActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                view.setEnabled(true);
             }
         });
     }

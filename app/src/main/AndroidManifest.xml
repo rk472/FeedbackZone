@@ -12,11 +12,7 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/NoBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
@@ -33,7 +29,16 @@
         <activity android:name=".FeedbackListActivity" />
         <activity android:name=".JuniorListActivity" />
         <activity android:name=".ForumActivity" />
-        <activity android:name=".AddPostActivity"></activity>
+        <activity android:name=".AddPostActivity" />
+        <activity android:name=".CommentActivity" />
+        <activity android:name=".SplashActivity"
+            android:theme="@style/NoBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
