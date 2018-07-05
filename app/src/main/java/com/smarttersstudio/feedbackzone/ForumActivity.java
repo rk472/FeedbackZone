@@ -58,6 +58,7 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
+                flag=0;
                 holder.gotoComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

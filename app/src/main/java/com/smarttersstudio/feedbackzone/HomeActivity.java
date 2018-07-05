@@ -127,7 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(HomeActivity.this,LoginActivity.class));
                     finish();
                 }
-                startActivity(new Intent(HomeActivity.this,ForumActivity.class));
+                //startActivity(new Intent(HomeActivity.this,ForumActivity.class));
             }
         });
 
