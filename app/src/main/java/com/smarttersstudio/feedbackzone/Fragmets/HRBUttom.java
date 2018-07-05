@@ -49,8 +49,6 @@ public class HRBUttom extends Fragment {
     private ProgressDialog progressDialog;
     private RadioGroup r1,r2,r3,r4,r5;
     private String rate="0";
-    private FloatingActionButton fab;
-    private ScrollView sv;
     private RatingBar rb;
     private Float one,two,three,four,five;
     @Override
@@ -71,22 +69,6 @@ public class HRBUttom extends Fragment {
         r4=root.findViewById(R.id.HR_radio_4);
         r5=root.findViewById(R.id.HR_radio_5);
         rb=root.findViewById(R.id.HR_rate);
-        //Fab Hide Test
-        fab=getActivity().findViewById(R.id.fab_profile);
-        sv=root.findViewById(R.id.hr_scroll);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            sv.setOnScrollChangeListener(new ScrollView.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if (scrollY > oldScrollY) {
-                        fab.hide();
-                    } else {
-                        fab.show();
-                    }
-                }
-            });
-        }
-        //Fab end
         updateButton=root.findViewById(R.id.HR_update);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override

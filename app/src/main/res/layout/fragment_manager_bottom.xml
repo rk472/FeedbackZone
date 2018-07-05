@@ -14,11 +14,15 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:text="MANAGER SECTION"
-                android:textSize="25sp"
-                android:layout_margin="10dp"/>
+                android:text="MANAGER DEPARTMENT"
+                android:fontFamily="@font/alike_angular"
+                android:elevation="10dp"
+                android:background="#ffffff"
+                android:textSize="25sp"/>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -34,7 +38,15 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alike_angular"
+                        android:text="Give Feedback"
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:fontFamily="@font/alike_angular"
@@ -43,10 +55,10 @@
                         />
                     <EditText
                         android:id="@+id/manager_feedback"
-                        android:layout_width="320sp"
+                        android:layout_width="300sp"
                         android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:hint="You are free to give any suggessions" />
+                        android:hint="You are free to give any suggestion" />
                     <Button
                         android:layout_width="200dp"
                         android:textStyle="bold"
