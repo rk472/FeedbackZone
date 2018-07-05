@@ -76,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
                 phoneText.setText(phone);
                 designationText.setText(designation);
                 departmentText.setText(dept);
-                Picasso.with(ProfileActivity.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.vect_profile)
+                Picasso.with(ProfileActivity.this).load(image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.profile_icon)
                         .into(dp, new Callback() {
                             @Override
                             public void onSuccess() {
@@ -84,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                             @Override
                             public void onError() {
-                                Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.vect_profile).into(dp);
+                                Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.profile_icon).into(dp);
                             }
                         });
                 progressDialog.dismiss();

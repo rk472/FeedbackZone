@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,33 +37,26 @@ public class ForumActivity extends AppCompatActivity {
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         postRef= FirebaseDatabase.getInstance().getReference().child("post");
         mAuth=FirebaseAuth.getInstance();
-        loadMore(limit);
-        list.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                Boolean reachedBottom = !recyclerView.canScrollVertically(1);
-
-                if(reachedBottom && flag==0){
-                    limit+=10;
-                    loadMore(limit);
-                    flag=1;
-                }
-            }
-        });
+        loadMore();
     }
-    public void loadMore(int limit){
-        Query q=postRef.orderByChild("time").limitToFirst(limit);
+    public void loadMore(){
+        Query q=postRef.orderByChild("time");
         FirebaseRecyclerOptions<Posts> options=new FirebaseRecyclerOptions.Builder<Posts>().setQuery(q,Posts.class).build();
         f=new FirebaseRecyclerAdapter<Posts, PostViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull PostViewHolder holder, int position, @NonNull Posts model) {
+            protected void onBindViewHolder(@NonNull PostViewHolder holder, final int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
                 flag=0;
                 holder.gotoComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        String post_id=getRef(position).getKey();
+                        Intent i=new Intent(ForumActivity.this,CommentActivity.class);
+                        i.putExtra("post_id",post_id);
+                        i.putExtra("post_name",model.getName());
+                        i.putExtra("post_text",model.getText());
+                        i.putExtra("post_date",model.getDate());
+                        startActivity(i);
                     }
                 });
             }
@@ -79,7 +73,17 @@ public class ForumActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(mAuth.getCurrentUser()==null){
+                    startActivity(new Intent(ForumActivity.this,LoginActivity.class));
+                    finish();
+                }
+            }
+        });
         f.startListening();
+
     }
 
     public void goToAddPost(View view) {
@@ -87,7 +91,8 @@ public class ForumActivity extends AppCompatActivity {
     }
     public  class PostViewHolder extends RecyclerView.ViewHolder{
         View v;
-        TextView nameText,postText,dateText,gotoComments;
+        TextView nameText,postText,dateText;
+        Button gotoComments;
         public PostViewHolder(View itemView) {
             super(itemView);
             v=itemView;

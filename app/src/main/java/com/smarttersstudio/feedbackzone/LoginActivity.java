@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailText,passwordText;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         emailText=findViewById(R.id.login_email);
         passwordText=findViewById(R.id.login_password);
         mAuth=FirebaseAuth.getInstance();
+        name=getIntent().getExtras().getString("name");
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Please wait while we are logging you in..");
         progressDialog.setTitle("Please Wait");
@@ -62,7 +63,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser()!=null) {
+            if(name.equals("feedback"))
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            else
+                startActivity(new Intent(LoginActivity.this, ForumActivity.class));
             finish();
         }
     }
