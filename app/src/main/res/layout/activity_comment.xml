@@ -12,57 +12,78 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/comment_post_name"
-                    android:text="name"
-                    android:textSize="25sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/comment_post_text"
-                    android:text="post"
-                    android:textSize="20sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/comment_post_date"
-                    android:text="post"
-                    android:textSize="20sp"/>
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/comment_post_name"
+                        android:text="name"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/alike_angular"
+                        android:textAllCaps="true"
+                        android:textSize="17sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/comment_post_date"
+                        android:text="22/02/2018"
+                        android:paddingRight="10dp"
+                        android:gravity="right"
+                        android:fontFamily="@font/alike_angular"
+                        android:textAllCaps="true"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/alike_angular"
+                        android:id="@+id/comment_post_text"
+                        android:text="post"
+                        android:textSize="15sp"/>
+                </LinearLayout>
         </ScrollView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/comment_list"
-        android:layout_weight="6"></android.support.v7.widget.RecyclerView>
+        android:layout_weight="6">
+
+    </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_weight="1"
+        android:background="@drawable/comment_shape"
         android:orientation="horizontal"
         android:weightSum="10">
 
         <EditText
             android:id="@+id/comment_edit"
             android:layout_width="0dp"
+            android:background="#00ffffff"
+            android:paddingLeft="20dp"
+            android:hint="Enter Your Comment"
             android:layout_height="match_parent"
-            android:layout_weight="7" />
-
+            android:layout_weight="8" />
         <Button
             android:id="@+id/comment_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="Comment"
+            android:layout_weight="2"
+            android:background="#00ffffff"
+            android:text="Send"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent"
             android:onClick="comment"/>
     </LinearLayout>
 </LinearLayout>

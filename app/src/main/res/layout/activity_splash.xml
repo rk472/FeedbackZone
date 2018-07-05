@@ -4,18 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".SplashActivity"
     android:orientation="vertical"
     android:gravity="center">
-    <Button
+    <ImageView
+        android:layout_width="300sp"
+        android:src="@drawable/hrlogo"
+        android:layout_marginBottom="100dp"
+        android:layout_height="100sp" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="feedback"
+        android:text="You want to ,"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/alike_angular"
+        android:textSize="27sp"/>
+    <Button
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:text="Go to feedback"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/alike_angular"
+        android:textColor="#ffffff"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="20dp"
         android:onClick="goToFeedBack"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="Forum"
+        android:text="Go to Forum"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/alike_angular"
+        android:layout_marginTop="10dp"
         android:onClick="gotoForum"/>
 
 </LinearLayout>
