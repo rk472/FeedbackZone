@@ -37,6 +37,15 @@
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="19dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/alike_angular"
+                    android:text="Give Feedback"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:textSize="16dp"
@@ -44,11 +53,11 @@
                     android:text="Any suggestions regarding any topic which are not listed in our app you want to give to make our company even better ?"
                     />
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="300sp"
                     android:layout_height="50dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:id="@+id/other_feedback"
-                    android:hint="You are free to give any suggessions"/>
+                    android:hint="You are free to give any suggestion"/>
                 <Button
                     android:layout_width="200sp"
                     android:layout_height="wrap_content"

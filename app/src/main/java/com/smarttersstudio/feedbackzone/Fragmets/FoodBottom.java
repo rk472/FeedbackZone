@@ -56,8 +56,6 @@ public class FoodBottom extends Fragment {
     private String rate="0";
     private Float one,two,three,four,five;
     private Button updateButton;
-    private FloatingActionButton fab;
-    private ScrollView sv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,22 +69,6 @@ public class FoodBottom extends Fragment {
         s2=root.findViewById(R.id.food_ans4);
         rg1=root.findViewById(R.id.food_radio);
         rb=root.findViewById(R.id.food_rate);
-        //Fab Hide Test
-        fab=getActivity().findViewById(R.id.fab_profile);
-        sv=root.findViewById(R.id.food_scroll);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            sv.setOnScrollChangeListener(new ScrollView.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if (scrollY > oldScrollY) {
-                        fab.hide();
-                    } else {
-                        fab.show();
-                    }
-                }
-            });
-        }
-        //Fab end
         mAuth=FirebaseAuth.getInstance();
         feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("food");
         rateRef= FirebaseDatabase.getInstance().getReference().child("rating").child("food");
