@@ -1,7 +1,7 @@
 package com.smarttersstudio.feedbackzone.POJO;
 
 public class Users {
-    String name,image,manager;
+    String name,image,manager,level;
 
     public String getName() {
         return name;
@@ -31,10 +31,19 @@ public class Users {
 
     }
 
-    public Users(String name, String image, String manager) {
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public Users(String name, String image, String manager, String level) {
 
         this.name = name;
         this.image = image;
         this.manager = manager;
+        this.level = level;
     }
 }

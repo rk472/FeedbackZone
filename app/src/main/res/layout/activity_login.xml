@@ -80,13 +80,24 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="22dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginLeft="22dp"
                     android:background="@color/colorAccent"
                     android:text="Sign in"
                     android:onClick="login"
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:onClick="goToSignUp"
+                    android:text="Don't have an account ? sign up now" />
             </LinearLayout>
         </RelativeLayout>
 

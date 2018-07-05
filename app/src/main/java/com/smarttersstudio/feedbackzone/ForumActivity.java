@@ -77,7 +77,9 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(mAuth.getCurrentUser()==null){
-                    startActivity(new Intent(ForumActivity.this,LoginActivity.class));
+                    Intent i=new Intent(ForumActivity.this,LoginActivity.class);
+                    i.putExtra("name","forum");
+                    startActivity(i);
                     finish();
                 }
             }
