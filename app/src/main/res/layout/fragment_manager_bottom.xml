@@ -84,9 +84,9 @@
             android:id="@+id/junior_button"
             android:background="@color/colorAccent"
             android:textAllCaps="false"
-            android:textSize="20dp"
+            android:textSize="16sp"
             android:textColor="#ffffff"
-            android:text="See Your feedback's about your juniors"/>
+            android:text="Feedback About Your Juniors"/>
     </RelativeLayout>
 
 

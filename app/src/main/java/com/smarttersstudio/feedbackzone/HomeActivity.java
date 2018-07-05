@@ -53,23 +53,23 @@ public class HomeActivity extends AppCompatActivity {
                         f = new AdministrationBottom();
                         tag="admin";
                         break;
-                    case 2:
+                    case 5:
                         f = new ManagerBottom();
                         tag="manager";
                         break;
-                    case 3:
+                    case 4:
                         f = new SecurityBottom();
                         tag="security";
                         break;
-                    case 4:
+                    case 6:
                         f=new OtherButtom();
                         tag="other";
                         break;
-                    case 5:
+                    case 2:
                         f=new AccountButtom();
                         tag="accounts";
                         break;
-                    case 6:
+                    case 3:
                         f=new HRBUttom();
                         tag="HR";
                         break;

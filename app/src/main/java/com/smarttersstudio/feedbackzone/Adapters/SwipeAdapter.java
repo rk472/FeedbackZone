@@ -27,19 +27,19 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
             case 1:
                 f = new AdministrationTop();
                 break;
-            case 2:
+            case 5:
                 f = new ManagerTop();
                 break;
-            case 3:
+            case 4:
                 f = new SecurityTop();
                 break;
-            case 4:
+            case 6:
                 f=new OtherTop();
                 break;
-            case 5:
+            case 2:
                 f=new AccountTop();
                 break;
-            case 6:
+            case 3:
                 f=new HRTop();
                 break;
         }
