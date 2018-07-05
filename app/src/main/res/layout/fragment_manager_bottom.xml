@@ -3,52 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragmets.ManagerBottom">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MANAGER SECTION"
+                android:textSize="25sp"
+                android:layout_margin="10dp"/>
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MANAGER"
-                    android:textSize="25sp"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="How many stars you will give for your manager(All the feedbacks will be anonymous)"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Any feedback about your manager to make him even better ?"
-                    />
-                <EditText
-                    android:id="@+id/manager_feedback"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:hint="You are free to give any suggessions" />
-                <Button
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="submit"
-                    android:id="@+id/manager_submit"
-                    />
-            </LinearLayout>
-        </ScrollView>
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:fontFamily="@font/alike_angular"
+                        android:layout_height="wrap_content"
+                        android:text="Any feedback about your manager to make him even better ?\n\n(All the feedbacks will be anonymous)"
+                        />
+                    <EditText
+                        android:id="@+id/manager_feedback"
+                        android:layout_width="320sp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:hint="You are free to give any suggessions" />
+                    <Button
+                        android:layout_width="200dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:fontFamily="@font/alike_angular"
+                        android:textSize="18dp"
+                        android:layout_margin="20dp"
+                        android:textAllCaps="false"
+                        android:background="@color/colorAccent"
+                        android:layout_height="wrap_content"
+                        android:text="Submit review"
+                        android:id="@+id/manager_submit"
+                        />
+                </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </ScrollView>
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alike_angular"
             android:layout_alignParentBottom="true"
             android:id="@+id/junior_button"
+            android:background="@color/colorAccent"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
             android:text="See Your feedback's about your juniors"/>
     </RelativeLayout>
 

@@ -14,11 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="15">
+            android:weightSum="25">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="5">
+                android:layout_weight="8">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -64,30 +64,38 @@
                         android:src="@drawable/ic_navigate_next_black_24dp" />
                 </LinearLayout>
             </RelativeLayout>
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:elevation="8dp"
                 android:onClick="showAllReview"
-                android:layout_weight="1">
+                android:layout_weight="2">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
                     android:textAllCaps="false"
                     android:text="Read All Reviews"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/colorGreen"
                     android:id="@+id/show_review_button" />
-            </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/view_shape"/>
+            </RelativeLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/main_container"
-                android:layout_weight="9">
-
-
+                android:layout_weight="15">
             </FrameLayout>
         </LinearLayout>
         <android.support.design.widget.FloatingActionButton

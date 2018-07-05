@@ -3,40 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragmets.OtherButtom">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Other Departments"
-                android:textSize="25sp"
-                android:layout_margin="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Any suggestions regarding any topic which are not listed in our app you want to give to make our company even better ?"
-                />
-            <EditText
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:text="OTHER DEPARTMENT"
+            android:fontFamily="@font/alike_angular"
+            android:elevation="10dp"
+            android:background="#ffffff"
+            android:textSize="25sp"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/other_feedback"
-                android:hint="You are free to give any suggessions"/>
-            <Button
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="submit"
-                android:id="@+id/other_submit"
-                />
-
-        </LinearLayout>
-    </ScrollView>
-
-
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/alike_angular"
+                    android:text="Any suggestions regarding any topic which are not listed in our app you want to give to make our company even better ?"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:id="@+id/other_feedback"
+                    android:hint="You are free to give any suggessions"/>
+                <Button
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    android:background="@color/colorAccent"
+                    android:elevation="5dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textColor="#ffffff"
+                    android:text="Submit Review"
+                    android:fontFamily="@font/alike_angular"
+                    android:id="@+id/other_submit"
+                    />
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </ScrollView>
+    </LinearLayout>
 </FrameLayout>
