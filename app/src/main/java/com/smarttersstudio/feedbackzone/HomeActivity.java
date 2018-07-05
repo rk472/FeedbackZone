@@ -127,8 +127,10 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(HomeActivity.this,LoginActivity.class));
                     finish();
                 }
+                startActivity(new Intent(HomeActivity.this,ForumActivity.class));
             }
         });
+
     }
 
     public void showAllReview(View view) {
