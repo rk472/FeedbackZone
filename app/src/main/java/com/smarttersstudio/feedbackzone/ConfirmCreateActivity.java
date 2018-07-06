@@ -42,6 +42,7 @@ public class ConfirmCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_create);
         mAuth=FirebaseAuth.getInstance();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name=getIntent().getExtras().getString("name");
         mail=getIntent().getExtras().getString("mail");
         phone=getIntent().getExtras().getString("phone");

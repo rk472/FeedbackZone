@@ -22,7 +22,6 @@ public class ForgotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mAuth=FirebaseAuth.getInstance();
         emailText=findViewById(R.id.forgot_email);
         progressDialog=new ProgressDialog(this);

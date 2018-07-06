@@ -29,6 +29,10 @@ public class FeedbackListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feedback_list);
         list=findViewById(R.id.feedback_list);
         String dept=getIntent().getExtras().getString("dept");
+        if(!dept.startsWith("manager"))
+            getSupportActionBar().setTitle("Feedback of "+dept.toUpperCase()+" Dept.");
+        else
+            getSupportActionBar().setTitle("Feedback of MANAGER Dept.");
         feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child(dept);
         FirebaseRecyclerOptions<FeedBack> options=new FirebaseRecyclerOptions.Builder<FeedBack>().setQuery(feedbackRef,FeedBack.class).build();
         f=new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {

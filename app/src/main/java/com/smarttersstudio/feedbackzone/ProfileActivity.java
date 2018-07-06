@@ -120,6 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void logout(View view) {
         mAuth.signOut();
+        finishAffinity();
         finish();
     }
 

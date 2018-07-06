@@ -38,6 +38,7 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post);
         mAuth=FirebaseAuth.getInstance();
         uid=mAuth.getCurrentUser().getUid();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         postRef= FirebaseDatabase.getInstance().getReference().child("post");
         userRef=FirebaseDatabase.getInstance().getReference().child("users").child(uid);
         postButton=findViewById(R.id.post_button);

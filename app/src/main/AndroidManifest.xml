@@ -22,13 +22,18 @@
             android:theme="@style/NoBar" />
         <activity
             android:name=".ForgotActivity"
-            android:label="Reset Password"
-            android:parentActivityName=".LoginActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".FeedbackListActivity" />
-        <activity android:name=".JuniorListActivity" />
-        <activity android:name=".ForumActivity" />
-        <activity android:name=".AddPostActivity" />
+            android:label="Reset Password"/>
+        <activity android:name=".ProfileActivity"
+            android:label="Profile" />
+        <activity android:name=".FeedbackListActivity"
+            android:label="All Feedback"/>
+        <activity android:name=".JuniorListActivity"
+            android:label="View Juniors"/>
+        <activity android:name=".ForumActivity"
+            android:label="Tech Forum"/>
+        <activity android:name=".AddPostActivity"
+            android:label="Create Post"
+            android:parentActivityName=".ForumActivity"/>
         <activity android:name=".CommentActivity" />
         <activity
             android:name=".SplashActivity"
@@ -39,10 +44,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".ConfirmCreateActivity" />
-        <activity android:name=".EditActivity" />
-        <activity android:name=".UpdateManagerActivity"></activity>
+        <activity android:name=".SignupActivity"
+            android:label="Register Now"/>
+        <activity android:name=".ConfirmCreateActivity"
+            android:label="Select Your Manager"/>
+        <activity android:name=".EditActivity"
+            android:label="Edit Profile"/>
+        <activity android:name=".UpdateManagerActivity"
+            android:label="Update Your Manager"/>
     </application>
 
 </manifest>
