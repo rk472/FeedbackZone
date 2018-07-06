@@ -149,9 +149,15 @@ public class HomeActivity extends AppCompatActivity {
 
     public void showAllReview(View view) {
         String tag=getSupportFragmentManager().findFragmentById(R.id.main_container).getTag();
-        if(level.equals("1") && tag.equals("manager")){
-            Toast.makeText(this, "You are not a senior yet to get reviews...", Toast.LENGTH_SHORT).show();
-        }else {
+        if(tag.equals("manager")){
+            if(level.equals("1"))
+                Toast.makeText(this, "You are not a senior yet to get reviews...", Toast.LENGTH_SHORT).show();
+            else{
+                Intent i = new Intent(HomeActivity.this, FeedbackListActivity.class);
+                i.putExtra("dept", tag+"/"+mAuth.getCurrentUser().getUid());
+                startActivity(i);
+            }
+        }else{
             Intent i = new Intent(HomeActivity.this, FeedbackListActivity.class);
             i.putExtra("dept", tag);
             startActivity(i);
