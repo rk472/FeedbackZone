@@ -31,7 +31,7 @@ import com.smarttersstudio.feedbackzone.Fragmets.SecurityBottom;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 public class HomeActivity extends AppCompatActivity {
-    private ViewPager viewPager;
+    private  ViewPager viewPager;
     private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
@@ -143,9 +143,9 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
     }
     public void openProfile(View v){
-        Intent itt = new Intent(this,ProfileActivity.class);
-        itt.putExtra("uid",mAuth.getCurrentUser().getUid().toString());
-        startActivity(itt);
+        Intent i=new Intent(this,ProfileActivity.class);
+        i.putExtra("uid",mAuth.getCurrentUser().getUid());
+        startActivity(i);
     }
 
     @Override
