@@ -59,6 +59,14 @@ public class ForumActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                 });
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(ForumActivity.this,ProfileActivity.class);
+                        i.putExtra("uid",model.getUid());
+                        startActivity(i);
+                    }
+                });
             }
 
             @NonNull

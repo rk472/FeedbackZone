@@ -55,7 +55,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         mAuth=FirebaseAuth.getInstance();
-
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Please wait while we are loading your Profile...");
         progressDialog.setTitle("Please Wait");
