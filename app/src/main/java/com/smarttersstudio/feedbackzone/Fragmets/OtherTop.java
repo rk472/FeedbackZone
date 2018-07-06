@@ -42,24 +42,6 @@ public class OtherTop extends Fragment {
         // Inflate the layout for this fragment
         root=inflater.inflate(R.layout.fragment_other_top, container, false);
         main=(AppCompatActivity)getActivity();
-        totalRef= FirebaseDatabase.getInstance().getReference().child("total").child("others");
-        totalRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                one=Float.parseFloat(dataSnapshot.child("one").getValue().toString());
-                two=Float.parseFloat(dataSnapshot.child("two").getValue().toString());
-                three=Float.parseFloat(dataSnapshot.child("three").getValue().toString());
-                four=Float.parseFloat(dataSnapshot.child("four").getValue().toString());
-                five=Float.parseFloat(dataSnapshot.child("five").getValue().toString());
-                total=one+two+three+four+five;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        totalRef.keepSynced(true);
         return root;
     }
     @Override
