@@ -19,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -166,6 +167,8 @@ public class AccountButtom extends Fragment {
                     if(bias.equalsIgnoreCase("yes")) r2.check(R.id.accounts_yes_2); else r2.check(R.id.accounts_no_2);
                     if(competant.equalsIgnoreCase("yes")) r3.check(R.id.accounts_yes_3); else r3.check(R.id.accounts_no_3);
                     rb.setRating(Float.parseFloat(rate));
+                    LottieAnimationView lv=root.findViewById(R.id.account);
+                    lv.setVisibility(View.GONE);
                 }
             }
 
