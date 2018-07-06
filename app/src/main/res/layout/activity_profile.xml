@@ -41,11 +41,14 @@
                         android:src="@drawable/vect_edit"
                         android:layout_gravity="center_horizontal"
                         android:elevation="5dp"
+                        android:onClick="goToEdit"
                         android:layout_marginLeft="185dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/profile_edit"/>
                     <android.support.design.widget.FloatingActionButton
                         android:layout_width="wrap_content"
+                        android:id="@+id/profile_photo"
                         android:src="@drawable/vect_pro_image"
                         android:layout_gravity="center_horizontal"
                         android:elevation="5dp"
@@ -110,6 +113,7 @@
                     android:layout_margin="25dp"
                     android:background="@color/colorAccent"
                     android:text="Log Out"
+                    android:id="@+id/profile_logout"
                     android:textAllCaps="false"
                     android:onClick="logout"
                     android:textColor="#fff"

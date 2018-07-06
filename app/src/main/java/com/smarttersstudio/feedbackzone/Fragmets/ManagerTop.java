@@ -51,6 +51,7 @@ public class ManagerTop extends Fragment {
                if(!m.equals("no")){
                    err.setVisibility(View.GONE);
                    managerRef=FirebaseDatabase.getInstance().getReference().child("users").child(m);
+                   managerRef.keepSynced(true);
                    managerRef.addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,7 +84,7 @@ public class ManagerTop extends Fragment {
 
             }
         });
-
+        userRef.keepSynced(true);
         return root;
     }
 

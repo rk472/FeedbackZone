@@ -168,11 +168,11 @@ public class HRBUttom extends Fragment {
                     String pragmatic=dataSnapshot.child(uid).child("pragmatic").getValue().toString();
                     String notify=dataSnapshot.child(uid).child("notify").getValue().toString();
                     rate=dataSnapshot.child(uid).child("rate").getValue().toString();
-                    if(polite.equals("yes")) r1.check(R.id.HR_yes_1); else r1.check(R.id.HR_no_1);
-                    if(bias.equals("yes")) r2.check(R.id.HR_yes_2); else r2.check(R.id.HR_no_2);
-                    if(competant.equals("yes")) r3.check(R.id.HR_yes_3); else r3.check(R.id.HR_no_3);
-                    if(pragmatic.equals("yes")) r4.check(R.id.HR_yes_4); else r4.check(R.id.HR_no_4);
-                    if(notify.equals("yes")) r5.check(R.id.HR_yes_5); else r5.check(R.id.HR_no_5);
+                    if(polite.equalsIgnoreCase("Yes")) r1.check(R.id.HR_yes_1); else r1.check(R.id.HR_no_1);
+                    if(bias.equalsIgnoreCase("Yes")) r2.check(R.id.HR_yes_2); else r2.check(R.id.HR_no_2);
+                    if(competant.equalsIgnoreCase("Yes")) r3.check(R.id.HR_yes_3); else r3.check(R.id.HR_no_3);
+                    if(pragmatic.equalsIgnoreCase("Yes")) r4.check(R.id.HR_yes_4); else r4.check(R.id.HR_no_4);
+                    if(notify.equalsIgnoreCase("Yes")) r5.check(R.id.HR_yes_5); else r5.check(R.id.HR_no_5);
                     rb.setRating(Float.parseFloat(rate));
                 }
             }
@@ -216,6 +216,9 @@ public class HRBUttom extends Fragment {
                 }
             }
         });
+        feedbackRef.keepSynced(true);
+        rateRef.keepSynced(true);
+        totalRef.keepSynced(true);
         return root;
     }
     void giveFeedBack(String feedback,String uid){

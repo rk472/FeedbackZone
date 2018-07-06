@@ -3,4 +3,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="level">
+        <item>employee ( 1 )</item>
+        <item>manager ( 2 ) </item>
+        <item>HR ( 3 )</item>
+        <item>Director ( 4 )</item>
+    </string-array>
+    <string-array name="dept">
+        <item>Food</item>
+        <item>Develpment</item>
+        <item>Testing</item>
+        <item>on site</item>
+        <item>HR</item>
+        <item>Security</item>
+        <item>Marketing</item>
+    </string-array>
 </resources>

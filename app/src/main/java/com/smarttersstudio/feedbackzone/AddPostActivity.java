@@ -75,6 +75,8 @@ public class AddPostActivity extends AppCompatActivity {
 
             }
         });
+        postRef.keepSynced(true);
+        userRef.keepSynced(true);
     }
 
     public void post(final View view) {

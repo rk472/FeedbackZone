@@ -162,9 +162,9 @@ public class AdministrationBottom extends Fragment {
                     String action=dataSnapshot.child(uid).child("action").getValue().toString();
                     String change=dataSnapshot.child(uid).child("change").getValue().toString();
                     rate=dataSnapshot.child(uid).child("rate").getValue().toString();
-                    if(comp.equals("yes")) r1.check(R.id.admin_yes_1); else r1.check(R.id.admin_no_1);
-                    if(balance.equals("yes")) r2.check(R.id.admin_yes_2); else r2.check(R.id.admin_no_2);
-                    if(action.equals("yes")) r2.check(R.id.admin_yes_3); else r3.check(R.id.admin_no_3);
+                    if(comp.equalsIgnoreCase("Yes")) r1.check(R.id.admin_yes_1); else r1.check(R.id.admin_no_1);
+                    if(balance.equalsIgnoreCase("Yes")) r2.check(R.id.admin_yes_2); else r2.check(R.id.admin_no_2);
+                    if(action.equalsIgnoreCase("Yes")) r2.check(R.id.admin_yes_3); else r3.check(R.id.admin_no_3);
                     ans.setText(change);
                     rb.setRating(Float.parseFloat(rate));
                 }
@@ -202,6 +202,9 @@ public class AdministrationBottom extends Fragment {
                 }
             }
         });
+        feedbackRef.keepSynced(true);
+        ratingRef.keepSynced(true);
+        totalRef.keepSynced(true);
        return root;
     }
     void giveFeedBack(String feedback,String uid){

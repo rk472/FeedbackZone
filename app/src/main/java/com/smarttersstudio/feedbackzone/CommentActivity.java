@@ -1,5 +1,6 @@
 package com.smarttersstudio.feedbackzone;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -99,8 +100,16 @@ public class CommentActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Posts> options=new FirebaseRecyclerOptions.Builder<Posts>().setQuery(commentRef.orderByChild("time"),Posts.class).build();
         f=new FirebaseRecyclerAdapter<Posts, CommentViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CommentViewHolder holder, int position, @NonNull Posts model) {
+            protected void onBindViewHolder(@NonNull CommentViewHolder holder, int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(CommentActivity.this,ProfileActivity.class);
+                        i.putExtra("uid",model.getUid());
+                        startActivity(i);
+                    }
+                });
             }
 
             @NonNull
@@ -113,6 +122,8 @@ public class CommentActivity extends AppCompatActivity {
         list.setAdapter(f);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        userRef.keepSynced(true);
+        commentRef.keepSynced(true);
     }
 
     @Override

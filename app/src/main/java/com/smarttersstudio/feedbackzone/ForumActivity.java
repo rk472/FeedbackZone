@@ -26,7 +26,6 @@ public class ForumActivity extends AppCompatActivity {
     private RecyclerView list;
     private FirebaseAuth mAuth;
     private DatabaseReference postRef;
-    private int limit=10,flag=0;
     FirebaseRecyclerAdapter<Posts,PostViewHolder> f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull PostViewHolder holder, final int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
-                flag=0;
                 holder.gotoComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -56,6 +54,14 @@ public class ForumActivity extends AppCompatActivity {
                         i.putExtra("post_name",model.getName());
                         i.putExtra("post_text",model.getText());
                         i.putExtra("post_date",model.getDate());
+                        startActivity(i);
+                    }
+                });
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i=new Intent(ForumActivity.this,ProfileActivity.class);
+                        i.putExtra("uid",model.getUid());
                         startActivity(i);
                     }
                 });
@@ -69,6 +75,7 @@ public class ForumActivity extends AppCompatActivity {
             }
         };
         list.setAdapter(f);
+        postRef.keepSynced(true);
     }
     @Override
     protected void onStart() {
@@ -77,7 +84,9 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(mAuth.getCurrentUser()==null){
-                    startActivity(new Intent(ForumActivity.this,LoginActivity.class));
+                    Intent i=new Intent(ForumActivity.this,LoginActivity.class);
+                    i.putExtra("name","forum");
+                    startActivity(i);
                     finish();
                 }
             }

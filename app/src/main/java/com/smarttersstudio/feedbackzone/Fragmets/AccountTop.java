@@ -60,6 +60,7 @@ public class AccountTop extends Fragment {
 
             }
         });
+        totalRef.keepSynced(true);
         return root;
     }
     private void initializeChart(){

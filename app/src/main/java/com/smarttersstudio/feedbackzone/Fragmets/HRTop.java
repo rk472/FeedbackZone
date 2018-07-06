@@ -59,6 +59,7 @@ public class HRTop extends Fragment {
 
             }
         });
+        totalRef.keepSynced(true);
         return root;
     }
     private void initializeChart(){

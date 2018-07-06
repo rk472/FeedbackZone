@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,15 +37,19 @@ import java.io.File;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
 
+import static android.view.View.GONE;
+
 public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference userRef;
     private TextView nameText,mailText,phoneText,designationText,departmentText;
     private CircleImageView dp;
     private ProgressDialog progressDialog;
-    private String name,mail,phone,dept,designation,image;
+    private String name,mail,phone,dept,designation,image,level;
     private Bitmap thumb_bitmap;
-
+    private String uid;
+    private FloatingActionButton fab1,fab2;
+    private Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +61,21 @@ public class ProfileActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
         progressDialog.show();
-        userRef= FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid());
+        fab1=findViewById(R.id.profile_edit);
+        fab2=findViewById(R.id.profile_photo);
+        logout=findViewById(R.id.profile_logout);
+        uid=getIntent().getExtras().getString("uid");
+        if(uid==null)
+            uid=mAuth.getCurrentUser().getUid();
+        else{
+            fab2.setVisibility(View.INVISIBLE);
+            fab1.setVisibility(View.INVISIBLE);
+            logout.setVisibility(View.GONE);
+            fab1.setEnabled(false);
+            fab2.setEnabled(false);
+            logout.setEnabled(false);
+        }
+        userRef= FirebaseDatabase.getInstance().getReference().child("users").child(uid);
         nameText=findViewById(R.id.profile_name);
         mailText=findViewById(R.id.profile_mail);
         phoneText=findViewById(R.id.profile_phone);
@@ -71,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
                 image=dataSnapshot.child("image").getValue().toString();
                 designation=dataSnapshot.child("designation").getValue().toString();
                 dept=dataSnapshot.child("department").getValue().toString();
+                level=dataSnapshot.child("level").getValue().toString();
                 nameText.setText(name);
                 mailText.setText(mail);
                 phoneText.setText(phone);
@@ -95,6 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+        userRef.keepSynced(true);
     }
 
     public void logout(View view) {
@@ -168,5 +190,14 @@ public class ProfileActivity extends AppCompatActivity {
             progressDialog.dismiss();
             progressDialog = null;
         }
+    }
+
+    public void goToEdit(View view) {
+        Intent i=new Intent(this,EditActivity.class);
+        i.putExtra("name",name);
+        i.putExtra("desc",designation);
+        i.putExtra("level",level);
+        i.putExtra("phone",phone);
+        startActivity(i);
     }
 }

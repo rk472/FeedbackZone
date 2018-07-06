@@ -175,7 +175,7 @@ public class FoodBottom extends Fragment {
                     s1.setProgress(Integer.parseInt(speed));
                     s2.setProgress(Integer.parseInt(clean));
                     rb.setRating(Float.parseFloat(rate));
-                    if(sufficient.equals("YES")){
+                    if(sufficient.equalsIgnoreCase("Yes")){
                         rg1.check(R.id.food_yes);
                     }else {
                         rg1.check(R.id.food_no);
@@ -219,7 +219,9 @@ public class FoodBottom extends Fragment {
                 }
             }
         });
-
+        feedbackRef.keepSynced(true);
+        rateRef.keepSynced(true);
+        totalRef.keepSynced(true);
         return root;
     }
     void giveFeedBack(String feedback,String uid){
