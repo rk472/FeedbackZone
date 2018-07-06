@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -175,6 +176,8 @@ public class HRBUttom extends Fragment {
                     if(notify.equalsIgnoreCase("Yes")) r5.check(R.id.HR_yes_5); else r5.check(R.id.HR_no_5);
                     rb.setRating(Float.parseFloat(rate));
                 }
+                LinearLayout lv=root.findViewById(R.id.hr);
+                lv.setVisibility(View.GONE);
             }
 
             @Override

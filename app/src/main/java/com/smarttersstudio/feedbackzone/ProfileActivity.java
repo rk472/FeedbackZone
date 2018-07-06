@@ -66,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         logout=findViewById(R.id.profile_logout);
         String muid=getIntent().getExtras().getString("uid");
         uid=mAuth.getCurrentUser().getUid();
-        if(!muid.equalsIgnoreCase(uid)){
+        if(!muid.equals(uid)){
             fab2.setVisibility(View.INVISIBLE);
             fab1.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.GONE);

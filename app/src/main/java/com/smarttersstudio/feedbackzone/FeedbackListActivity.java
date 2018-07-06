@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -22,7 +23,8 @@ import com.smarttersstudio.feedbackzone.POJO.FeedBack;
 public class FeedbackListActivity extends AppCompatActivity {
     private RecyclerView list;
     private DatabaseReference feedbackRef;
-    FirebaseRecyclerAdapter<FeedBack,FeedBackViewHoldewr> f;
+    private FirebaseRecyclerAdapter<FeedBack,FeedBackViewHoldewr> f;
+    private LinearLayout load,no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +36,28 @@ public class FeedbackListActivity extends AppCompatActivity {
         else
             getSupportActionBar().setTitle("Feedback of MANAGER Dept.");
         feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child(dept);
+        no=findViewById(R.id.no_manager);
+        load=findViewById(R.id.manager_load);
+        feedbackRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()==0){
+                    no.setVisibility(View.VISIBLE);
+                }    else{
+                    no.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerOptions<FeedBack> options=new FirebaseRecyclerOptions.Builder<FeedBack>().setQuery(feedbackRef,FeedBack.class).build();
         f=new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final FeedBackViewHoldewr holder, int position, @NonNull final FeedBack model) {
+                load.setVisibility(View.GONE);
                 holder.setAll("Unknown User", model.getDate(), model.getFeedback());
             }
             @NonNull

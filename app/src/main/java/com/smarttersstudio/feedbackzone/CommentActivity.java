@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.view.View.GONE;
+
 public class CommentActivity extends AppCompatActivity {
     private EditText commentText;
     private Button commentButton;
@@ -46,6 +49,7 @@ public class CommentActivity extends AppCompatActivity {
     private RecyclerView list;
     private DatabaseReference userRef,commentRef;
     private FirebaseRecyclerAdapter<Posts,CommentViewHolder> f;
+    private LinearLayout load,no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,8 @@ public class CommentActivity extends AppCompatActivity {
         postDate=findViewById(R.id.comment_post_date);
         postName=findViewById(R.id.comment_post_name);
         postText=findViewById(R.id.comment_post_text);
+        no=findViewById(R.id.no_comment);
+        load=findViewById(R.id.comment_load);
         mAuth=FirebaseAuth.getInstance();
         uid=mAuth.getCurrentUser().getUid();
         post_id=getIntent().getExtras().getString("post_id");
@@ -97,11 +103,27 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
+        commentRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()==0){
+                    no.setVisibility(View.VISIBLE);
+                }else{
+                    no.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerOptions<Posts> options=new FirebaseRecyclerOptions.Builder<Posts>().setQuery(commentRef.orderByChild("time"),Posts.class).build();
         f=new FirebaseRecyclerAdapter<Posts, CommentViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CommentViewHolder holder, int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
+                load.setVisibility(GONE);
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

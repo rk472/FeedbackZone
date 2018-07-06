@@ -164,13 +164,13 @@ public class AccountButtom extends Fragment {
                     String bias=dataSnapshot.child(uid).child("helpful").getValue().toString();
                     String competant=dataSnapshot.child(uid).child("finance").getValue().toString();
                     rate=dataSnapshot.child(uid).child("rate").getValue().toString();
-                    if(polite.equalsIgnoreCase("yes")) r1.check(R.id.accounts_yes_1); else r1.check(R.id.accounts_no_1);
-                    if(bias.equalsIgnoreCase("yes")) r2.check(R.id.accounts_yes_2); else r2.check(R.id.accounts_no_2);
-                    if(competant.equalsIgnoreCase("yes")) r3.check(R.id.accounts_yes_3); else r3.check(R.id.accounts_no_3);
+                    if(polite.equalsIgnoreCase("Yes")) r1.check(R.id.accounts_yes_1); else r1.check(R.id.accounts_no_1);
+                    if(bias.equalsIgnoreCase("Yes")) r2.check(R.id.accounts_yes_2); else r2.check(R.id.accounts_no_2);
+                    if(competant.equalsIgnoreCase("Yes")) r3.check(R.id.accounts_yes_3); else r3.check(R.id.accounts_no_3);
                     rb.setRating(Float.parseFloat(rate));
-                    LinearLayout lv=root.findViewById(R.id.account);
-                    lv.setVisibility(View.GONE);
                 }
+                LinearLayout lv=root.findViewById(R.id.accountss);
+                lv.setVisibility(View.GONE);
             }
 
             @Override
