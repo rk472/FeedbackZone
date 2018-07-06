@@ -34,17 +34,7 @@ public class FeedbackListActivity extends AppCompatActivity {
         f=new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final FeedBackViewHoldewr holder, int position, @NonNull final FeedBack model) {
-                DatabaseReference d=FirebaseDatabase.getInstance().getReference().child("users").child(model.getUid());
-                d.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String name=dataSnapshot.child("name").getValue().toString();
-                        holder.setAll(name,model.getDate(),model.getFeedback());
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+                holder.setAll("Unknown User", model.getDate(), model.getFeedback());
             }
             @NonNull
             @Override
