@@ -8,21 +8,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:elevation="20dp"
+        android:id="@+id/security">
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_fileName="book_final.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:text="SECURITY DEPARTMENT"
+            android:fontFamily="@font/alike_angular"
+            android:elevation="10dp"
             android:background="#ffffff"
-            android:elevation="20dp"
-            android:id="@+id/security">
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:lottie_fileName="book_final.json"
-                app:lottie_loop="true"
-                app:lottie_autoPlay="true" />
-        </LinearLayout>
-
-    <ScrollView
+            android:textSize="25sp"/>
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -30,14 +44,34 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SECURITY DEPARTMENT"
-                android:textSize="25sp"
-                android:layout_margin="10dp"/>
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/alike_angular"
                 android:layout_height="wrap_content"
                 android:text="Are You satisfied with our physical securities (Guards)??"/>
             <RadioGroup
@@ -57,9 +91,26 @@
                 android:layout_marginLeft="30dp"
                 android:id="@+id/security_no_1"/>
         </RadioGroup>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/alike_angular"
                 android:text="Are You satisfied with our Cyber securities mechanism ??"/>
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -78,6 +129,22 @@
                     android:layout_marginLeft="30dp"
                     android:id="@+id/security_no_2"/>
             </RadioGroup>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,22 +169,61 @@
                 android:background="@color/colorAccent"
                 android:id="@+id/security_update_button"
                 android:text="Update Rating"/>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="19dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/alike_angular"
+                    android:text="Give Feedback"
+                    />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/alike_angular"
                 android:text="Any suggestions you want to give to make our department even better ?"
                 />
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="300sp"
+                android:layout_height="50dp"
                 android:id="@+id/security_feedback"
                 android:hint="You are free to give any suggestions."/>
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="250sp"
                 android:layout_height="wrap_content"
-                android:text="submit"
+                android:text="Submit Feedback"
+                android:fontFamily="@font/alike_angular"
+                android:textAllCaps="false"
+                android:textSize="17dp"
+                android:elevation="5dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_margin="15dp"
+                android:background="@color/colorAccent"
                 android:id="@+id/security_submit" />
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
     </RelativeLayout>
 </FrameLayout>
