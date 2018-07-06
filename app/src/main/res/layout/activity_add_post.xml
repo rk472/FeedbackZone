@@ -15,9 +15,16 @@
         android:layout_margin="20dp"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:text="post"
+        android:text="Create Post"
+        android:fontFamily="@font/alike_angular"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:elevation="5dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@color/colorAccent"
         android:id="@+id/post_button"
         android:onClick="post"/>
 
