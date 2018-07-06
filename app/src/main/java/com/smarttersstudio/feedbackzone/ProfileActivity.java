@@ -64,10 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
         fab1=findViewById(R.id.profile_edit);
         fab2=findViewById(R.id.profile_photo);
         logout=findViewById(R.id.profile_logout);
-        uid=getIntent().getExtras().getString("uid");
-        if(uid==null)
-            uid=mAuth.getCurrentUser().getUid();
-        else{
+        String muid=getIntent().getExtras().getString("uid");
+        uid=mAuth.getCurrentUser().getUid();
+        if(!muid.equalsIgnoreCase(uid)){
             fab2.setVisibility(View.INVISIBLE);
             fab1.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.GONE);
@@ -75,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
             fab2.setEnabled(false);
             logout.setEnabled(false);
         }
-        userRef= FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+        userRef= FirebaseDatabase.getInstance().getReference().child("users").child(muid);
         nameText=findViewById(R.id.profile_name);
         mailText=findViewById(R.id.profile_mail);
         phoneText=findViewById(R.id.profile_phone);

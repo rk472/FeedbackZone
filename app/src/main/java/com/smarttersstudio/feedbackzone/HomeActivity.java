@@ -143,7 +143,9 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true);
     }
     public void openProfile(View v){
-        startActivity(new Intent(this,ProfileActivity.class));
+        Intent i=new Intent(this,ProfileActivity.class);
+        i.putExtra("uid",mAuth.getCurrentUser().getUid());
+        startActivity(i);
     }
 
     @Override
