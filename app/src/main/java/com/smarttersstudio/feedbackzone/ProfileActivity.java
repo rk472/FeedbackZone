@@ -47,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private String name,mail,phone,dept,designation,image,level;
     private Bitmap thumb_bitmap;
-    private String uid;
+    private String uid,currId;
     private FloatingActionButton fab1,fab2;
     private Button logout;
     @Override
@@ -65,7 +65,8 @@ public class ProfileActivity extends AppCompatActivity {
         fab2=findViewById(R.id.profile_photo);
         logout=findViewById(R.id.profile_logout);
         uid=getIntent().getExtras().getString("uid");
-        if(uid==null)
+        currId=mAuth.getCurrentUser().getUid();
+        if(uid.equals(currId))
             uid=mAuth.getCurrentUser().getUid();
         else{
             fab2.setVisibility(View.INVISIBLE);
