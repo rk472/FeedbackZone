@@ -67,11 +67,16 @@ public class ConfirmCreateActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getChildrenCount()==0){
-                    no.setVisibility(View.VISIBLE);
-                }else{
-                    no.setVisibility(GONE);
+                int i=0;
+                for(DataSnapshot d:dataSnapshot.getChildren()){
+                    if(d.child("level").getValue().toString().equals(newLevel))
+                        i++;
                 }
+
+                if(i==0)
+                    no.setVisibility(View.VISIBLE);
+                else
+                    no.setVisibility(View.GONE);
             }
 
             @Override

@@ -75,14 +75,15 @@ public class AdministrationBottom extends Fragment {
                 RadioButton rr1=root.findViewById(r1.getCheckedRadioButtonId());
                 RadioButton rr2=root.findViewById(r2.getCheckedRadioButtonId());
                 RadioButton rr3=root.findViewById(r3.getCheckedRadioButtonId());
-                String comp=rr1.getText().toString();
-                String balance=rr2.getText().toString();
-                String action=rr3.getText().toString();
-                String change=ans.getText().toString();
                 String rate1=Integer.toString((int)rb.getRating());
-                if(TextUtils.isEmpty(comp) ||TextUtils.isEmpty(balance) ||TextUtils.isEmpty(action) ||TextUtils.isEmpty(change) ||TextUtils.isEmpty(rate1) ){
+                String change=ans.getText().toString();
+                if(rr1==null || rr2==null || rr3==null|| rate1.equals("0") || TextUtils.isEmpty(change) ){
                     Toast.makeText(getActivity(), "Can't rate with empty fields", Toast.LENGTH_SHORT).show();
                 }else{
+                    String comp=rr1.getText().toString();
+                    String balance=rr2.getText().toString();
+                    String action=rr3.getText().toString();
+
                     Map m=new HashMap();
                     m.put("compensation",comp);
                     m.put("balance",balance);

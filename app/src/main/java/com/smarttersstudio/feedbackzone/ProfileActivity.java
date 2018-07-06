@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,19 +51,15 @@ public class ProfileActivity extends AppCompatActivity {
     private String uid;
     private FloatingActionButton fab1,fab2;
     private Button logout;
+    private LinearLayout lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         mAuth=FirebaseAuth.getInstance();
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("Please wait while we are loading your Profile...");
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
-        progressDialog.show();
         fab1=findViewById(R.id.profile_edit);
         fab2=findViewById(R.id.profile_photo);
+        lv=findViewById(R.id.profile);
         logout=findViewById(R.id.profile_logout);
         String muid=getIntent().getExtras().getString("uid");
         uid=mAuth.getCurrentUser().getUid();
@@ -107,7 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 Picasso.with(ProfileActivity.this).load(image).placeholder(R.drawable.profile_icon).into(dp);
                             }
                         });
-                progressDialog.dismiss();
+                lv.setVisibility(GONE);
             }
 
             @Override
@@ -136,6 +133,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
+                progressDialog=new ProgressDialog(this);
                 progressDialog.setMessage("Wait while We are updating your Profile Picture..");
                 progressDialog.setTitle("Please Wait");
                 progressDialog.show();

@@ -1,5 +1,6 @@
 package com.smarttersstudio.feedbackzone;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -60,11 +61,16 @@ public class UpdateManagerActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getChildrenCount()==0){
-                    no.setVisibility(View.VISIBLE);
-                }else{
-                    no.setVisibility(GONE);
+                int i=0;
+                for(DataSnapshot d:dataSnapshot.getChildren()){
+                    if(d.child("level").getValue().toString().equals(newLevel))
+                        i++;
                 }
+
+                if(i==0)
+                    no.setVisibility(View.VISIBLE);
+                else
+                    no.setVisibility(View.GONE);
             }
 
             @Override
@@ -126,17 +132,25 @@ public class UpdateManagerActivity extends AppCompatActivity {
     }
 
     void create(final String manager){
+        final ProgressDialog p=new ProgressDialog(this);
+        p.setTitle("Please Wait");
+        p.setCancelable(false);
+        p.setCanceledOnTouchOutside(false);
+        p.setMessage("Please wait while we are creating your account..");
+        p.show();
         list.setEnabled(false);
         userRef.child(mAuth.getCurrentUser().getUid()).child("manager").setValue(manager).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(UpdateManagerActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                p.dismiss();
                 list.setEnabled(true);
             }
         }).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(UpdateManagerActivity.this, "Manager added successfully", Toast.LENGTH_SHORT).show();
+                p.dismiss();
                 finish();
             }
         });

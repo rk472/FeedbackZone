@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
-                android:text="No Managers found for you"/>
+                android:text="No Feedbacks found for you"/>
         </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

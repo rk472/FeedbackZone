@@ -36,8 +36,8 @@ public class FeedbackListActivity extends AppCompatActivity {
         else
             getSupportActionBar().setTitle("Feedback of MANAGER Dept.");
         feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child(dept);
-        no=findViewById(R.id.no_manager);
-        load=findViewById(R.id.manager_load);
+        no=findViewById(R.id.no_feedback);
+        load=findViewById(R.id.feedback_load);
         feedbackRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

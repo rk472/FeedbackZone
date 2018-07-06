@@ -82,12 +82,12 @@ public class FoodBottom extends Fragment {
                 String dislike=ans2.getText().toString();
                 String speed=Integer.toString(s1.getProgress());
                 RadioButton r=root.findViewById(rg1.getCheckedRadioButtonId());
-                String sufficient=r.getText().toString();
                 String clean=Integer.toString(s2.getProgress());
                 String rate1=Integer.toString((int)rb.getRating());
-                if(TextUtils.isEmpty(like) ||TextUtils.isEmpty(dislike) || TextUtils.isEmpty(speed)||TextUtils.isEmpty(clean)||TextUtils.isEmpty(sufficient)||TextUtils.isEmpty(rate1) ){
+                if(TextUtils.isEmpty(like) ||r==null || rate1.equals("0")||TextUtils.isEmpty(dislike)  || TextUtils.isEmpty(speed)||TextUtils.isEmpty(clean)||TextUtils.isEmpty(rate1) ){
                     Toast.makeText(getActivity(), "Can't rate with empty fields", Toast.LENGTH_SHORT).show();
                 }else{
+                    String sufficient=r.getText().toString();
                     Map<String, Object> m=new HashMap<String, Object>();
                     m.put("like",like);
                     m.put("dislike",dislike);

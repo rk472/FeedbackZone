@@ -49,7 +49,13 @@ public class JuniorListActivity extends AppCompatActivity {
         juniorRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getChildrenCount()==0){
+                int i=0;
+                for(DataSnapshot d:dataSnapshot.getChildren()){
+                    if(d.child("manager").getValue().toString().equals(uid)){
+                        i++;
+                    }
+                }
+                if(i==0){
                     no.setVisibility(View.VISIBLE);
                 }    else{
                     no.setVisibility(View.GONE);
