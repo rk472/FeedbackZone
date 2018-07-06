@@ -48,24 +48,56 @@
                         android:textSize="15sp"/>
                 </LinearLayout>
         </ScrollView>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="18"
-        android:orientation="vertical"
-        android:layout_height="0dp">
-        <View
+        android:layout_height="0dp"
+        android:layout_weight="18">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2sp"
-            android:layout_margin="5dp"
-            android:background="@drawable/view_shape"/>
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:padding="10dp"
             android:layout_height="match_parent"
-            android:id="@+id/comment_list">
+            android:background="#ffffff"
+            android:elevation="20dp"
+            android:id="@+id/comment_load">
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:lottie_fileName="book_final.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:elevation="25dp"
+            android:id="@+id/no_comment"
+            android:visibility="gone"
+            android:background="#ffffff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:text="No Comments Yet"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:layout_margin="5dp"
+                android:background="@drawable/view_shape"/>
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/comment_list">
 
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

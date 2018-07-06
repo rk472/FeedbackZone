@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.smarttersstudio.feedbackzone.POJO.Users;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
@@ -31,12 +35,15 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.view.View.GONE;
+
 public class ConfirmCreateActivity extends AppCompatActivity {
     private RecyclerView list;
     private DatabaseReference userRef;
     private FirebaseAuth mAuth;
     private FirebaseRecyclerAdapter<Users,JuniorViewHolder> f;
-    String name,mail,phone,pass,level,post,dept;
+    private String name,mail,phone,pass,level,post,dept;
+    private LinearLayout load,no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +56,35 @@ public class ConfirmCreateActivity extends AppCompatActivity {
         level=getIntent().getExtras().getString("level");
         post=getIntent().getExtras().getString("designation");
         dept=getIntent().getExtras().getString("department");
+        no=findViewById(R.id.no_manager);
+        load=findViewById(R.id.manager_load);
         userRef= FirebaseDatabase.getInstance().getReference().child("users");
         list=findViewById(R.id.manager_select);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         final String newLevel=Integer.toString(Integer.parseInt(level)+1);
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()==0){
+                    no.setVisibility(View.VISIBLE);
+                }else{
+                    no.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerOptions<Users> options=new FirebaseRecyclerOptions.Builder<Users>().setQuery(userRef,Users.class).build();
         f=new FirebaseRecyclerAdapter<Users,JuniorViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull JuniorViewHolder holder, final int position, @NonNull Users model) {
                 if(model.getLevel().equals(newLevel)) {
                     holder.setAll(model.getName(), model.getImage());
+                    load.setVisibility(GONE);
                     holder.v.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

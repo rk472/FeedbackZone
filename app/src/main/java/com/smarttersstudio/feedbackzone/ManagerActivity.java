@@ -21,28 +21,46 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.smarttersstudio.feedbackzone.POJO.FeedBack;
 
+import static android.view.View.GONE;
+
 public class ManagerActivity extends AppCompatActivity {
     private RecyclerView list;
-    private LinearLayout lin;
     private FirebaseAuth mAuth;
     private DatabaseReference feedbackRef;
     private FirebaseRecyclerAdapter<FeedBack,FeedBackViewHoldewr> f;
+    private LinearLayout load,no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
         list=findViewById(R.id.manager_list);
-        lin=findViewById(R.id.manager_list_error);
+        no=findViewById(R.id.no_review);
+        load=findViewById(R.id.review_load);
         mAuth=FirebaseAuth.getInstance();
         String uid=mAuth.getCurrentUser().getUid();
+        feedbackRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()==0){
+                    no.setVisibility(View.VISIBLE);
+                }else{
+                    no.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("manager").child(uid);
         FirebaseRecyclerOptions<FeedBack> options=new FirebaseRecyclerOptions.Builder<FeedBack>().setQuery(feedbackRef,FeedBack.class).build();
         f= new FirebaseRecyclerAdapter<FeedBack, FeedBackViewHoldewr>(options) {
             @Override
             protected void onBindViewHolder(@NonNull FeedBackViewHoldewr holder, int position, @NonNull FeedBack model) {
-                lin.setVisibility(View.GONE);
+                load.setVisibility(GONE);
                 holder.setAll("",model.getDate(),model.getFeedback());
-                holder.nameText.setVisibility(View.GONE);
+                holder.nameText.setVisibility(GONE);
             }
             @NonNull
             @Override

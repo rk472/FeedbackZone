@@ -12,23 +12,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.smarttersstudio.feedbackzone.POJO.Posts;
 import com.smarttersstudio.feedbackzone.POJO.Users;
+
+import static android.view.View.GONE;
 
 public class ForumActivity extends AppCompatActivity {
     private RecyclerView list;
     private FirebaseAuth mAuth;
     private DatabaseReference postRef;
-    FirebaseRecyclerAdapter<Posts,PostViewHolder> f;
+    private FirebaseRecyclerAdapter<Posts,PostViewHolder> f;
+    private LinearLayout load,no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,23 @@ public class ForumActivity extends AppCompatActivity {
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         postRef= FirebaseDatabase.getInstance().getReference().child("post");
         mAuth=FirebaseAuth.getInstance();
+        no=findViewById(R.id.no_post);
+        load=findViewById(R.id.post_load);
+        postRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()==0){
+                    no.setVisibility(View.VISIBLE);
+                }else{
+                    no.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         loadMore();
     }
     public void loadMore(){
@@ -47,6 +71,7 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull PostViewHolder holder, final int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
+                load.setVisibility(GONE);
                 holder.gotoComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
