@@ -12,9 +12,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
+            android:id="@+id/admin"
             android:elevation="20dp">
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:lottie_fileName="book_final.json"

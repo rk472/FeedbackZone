@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -168,7 +169,7 @@ public class AdministrationBottom extends Fragment {
                     if(action.equalsIgnoreCase("Yes")) r2.check(R.id.admin_yes_3); else r3.check(R.id.admin_no_3);
                     ans.setText(change);
                     rb.setRating(Float.parseFloat(rate));
-                    LottieAnimationView lv=root.findViewById(R.id.admin);
+                    LinearLayout lv=root.findViewById(R.id.admin);
                     lv.setVisibility(View.GONE);
                 }
             }
