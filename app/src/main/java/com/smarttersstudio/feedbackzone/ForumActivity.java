@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -94,7 +96,23 @@ public class ForumActivity extends AppCompatActivity {
         f.startListening();
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_profile) {
+            Intent i = new Intent(ForumActivity.this,ProfileActivity.class);
+            i.putExtra("uid",mAuth.getCurrentUser().getUid().toString());
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     public void goToAddPost(View view) {
         startActivity(new Intent(ForumActivity.this,AddPostActivity.class));
     }

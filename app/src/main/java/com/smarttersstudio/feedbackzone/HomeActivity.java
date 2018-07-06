@@ -116,24 +116,6 @@ public class HomeActivity extends AppCompatActivity {
         userRef.keepSynced(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_logout) {
-            mAuth.signOut();
-            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
-            finishAffinity();
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void prev(View view) {
         viewPager.setCurrentItem(viewPager.getCurrentItem()-1, true);
