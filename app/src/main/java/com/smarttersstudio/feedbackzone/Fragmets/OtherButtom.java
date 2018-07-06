@@ -78,6 +78,7 @@ public class OtherButtom extends Fragment {
                 }
             }
         });
+        feedbackRef.keepSynced(true);
         return root;
     }
     void giveFeedBack(String feedback,String uid){

@@ -63,6 +63,7 @@ public class ManagerBottom extends Fragment {
                 managerUid=dataSnapshot.child("manager").getValue().toString();
                 level=Integer.parseInt(dataSnapshot.child("level").getValue().toString());
                 feedbackRef= FirebaseDatabase.getInstance().getReference().child("feedback").child("manager").child(managerUid);
+                feedbackRef.keepSynced(true);
                 if(level>1) {
                     junior_button.setVisibility(View.VISIBLE);
                 }
@@ -106,6 +107,7 @@ public class ManagerBottom extends Fragment {
                 }
             }
         });
+        userRef.keepSynced(true);
         return root;
     }
     void giveFeedBack(String feedback){

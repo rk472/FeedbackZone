@@ -26,7 +26,6 @@ public class ForumActivity extends AppCompatActivity {
     private RecyclerView list;
     private FirebaseAuth mAuth;
     private DatabaseReference postRef;
-    private int limit=10,flag=0;
     FirebaseRecyclerAdapter<Posts,PostViewHolder> f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull PostViewHolder holder, final int position, @NonNull final Posts model) {
                 holder.setAll(model.getName(),model.getText(),model.getDate());
-                flag=0;
                 holder.gotoComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -77,6 +75,7 @@ public class ForumActivity extends AppCompatActivity {
             }
         };
         list.setAdapter(f);
+        postRef.keepSynced(true);
     }
     @Override
     protected void onStart() {

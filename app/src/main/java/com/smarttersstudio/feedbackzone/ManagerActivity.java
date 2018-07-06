@@ -54,7 +54,7 @@ public class ManagerActivity extends AppCompatActivity {
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         list.setAdapter(f);
-
+        feedbackRef.keepSynced(true);
     }
     public static class FeedBackViewHoldewr extends RecyclerView.ViewHolder{
         View v;

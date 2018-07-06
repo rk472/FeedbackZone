@@ -116,6 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+        userRef.keepSynced(true);
     }
 
     public void logout(View view) {

@@ -113,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+        userRef.keepSynced(true);
     }
 
     @Override

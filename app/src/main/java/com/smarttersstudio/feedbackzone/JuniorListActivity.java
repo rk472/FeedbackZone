@@ -68,6 +68,7 @@ public class JuniorListActivity extends AppCompatActivity {
         list.setAdapter(f);
         list.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         list.setHasFixedSize(true);
+        juniorRef.keepSynced(true);
     }
     public class JuniorViewHolder extends RecyclerView.ViewHolder{
         CircleImageView dp;

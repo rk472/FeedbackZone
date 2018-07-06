@@ -60,6 +60,7 @@ public class AdministrationTop extends Fragment {
 
             }
         });
+        totalRef.keepSynced(true);
         return root;
     }
     private void initializeChart(){

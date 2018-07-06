@@ -219,7 +219,9 @@ public class FoodBottom extends Fragment {
                 }
             }
         });
-
+        feedbackRef.keepSynced(true);
+        rateRef.keepSynced(true);
+        totalRef.keepSynced(true);
         return root;
     }
     void giveFeedBack(String feedback,String uid){

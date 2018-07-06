@@ -40,6 +40,7 @@ public class EditActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         String uid=mAuth.getCurrentUser().getUid();
         userRef= FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+        userRef.keepSynced(true);
     }
 
     public void update(final View view) {

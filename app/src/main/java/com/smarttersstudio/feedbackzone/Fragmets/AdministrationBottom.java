@@ -202,6 +202,9 @@ public class AdministrationBottom extends Fragment {
                 }
             }
         });
+        feedbackRef.keepSynced(true);
+        ratingRef.keepSynced(true);
+        totalRef.keepSynced(true);
        return root;
     }
     void giveFeedBack(String feedback,String uid){

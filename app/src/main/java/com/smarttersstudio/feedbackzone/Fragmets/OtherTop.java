@@ -61,6 +61,7 @@ public class OtherTop extends Fragment {
 
             }
         });
+        totalRef.keepSynced(true);
         return root;
     }
     private void initializeChart(){

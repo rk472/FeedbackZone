@@ -79,7 +79,7 @@ public class ConfirmCreateActivity extends AppCompatActivity {
             }
         };
         list.setAdapter(f);
-
+        userRef.keepSynced(true);
 
 
     }

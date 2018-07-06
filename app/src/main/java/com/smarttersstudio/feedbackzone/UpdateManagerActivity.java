@@ -73,7 +73,7 @@ public class UpdateManagerActivity extends AppCompatActivity {
             }
         };
         list.setAdapter(f);
-
+        userRef.keepSynced(true);
     }
 
     public void update_skip(View view) {
