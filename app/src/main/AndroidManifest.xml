@@ -39,7 +39,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity" />
-        <activity android:name=".ConfirmCreateActivity"></activity>
+        <activity android:name=".ConfirmCreateActivity" />
+        <activity android:name=".EditActivity" />
+        <activity android:name=".UpdateManagerActivity"></activity>
     </application>
 
 </manifest>
